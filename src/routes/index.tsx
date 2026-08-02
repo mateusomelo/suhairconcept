@@ -5,11 +5,14 @@ import { BackToTop } from "@/components/site/BackToTop";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Differentials } from "@/components/site/Differentials";
+import { Faq } from "@/components/site/Faq";
 import { Footer } from "@/components/site/Footer";
 import { Gallery } from "@/components/site/Gallery";
 import { Header } from "@/components/site/Header";
 import { Hero } from "@/components/site/Hero";
 import { InstagramSection } from "@/components/site/InstagramSection";
+import { MegaHair } from "@/components/site/MegaHair";
+import { Philosophy } from "@/components/site/Philosophy";
 import { Reviews } from "@/components/site/Reviews";
 import { Services } from "@/components/site/Services";
 import { TopBanner } from "@/components/site/TopBanner";
@@ -99,11 +102,14 @@ function Index() {
         <Hero />
         <About />
         <Services />
+        <MegaHair />
         <Differentials />
+        <Philosophy />
         <BeforeAfter />
         <Gallery />
         <Reviews />
         <CtaSection />
+        <Faq />
         <LocationHours />
         <InstagramSection />
       </main>
