@@ -59,7 +59,14 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-ink: var(--ink);
+  --color-offwhite: var(--offwhite);
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Poppins", sans-serif;
 }
+
 
 :root {
   --radius: 0.625rem;
@@ -141,4 +148,50 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+/* SÜ Hair Concept — brand tokens */
+:root {
+  --radius: 0.25rem;
+  --gold: oklch(0.75 0.13 86);
+  --gold-soft: oklch(0.86 0.07 90);
+  --ink: oklch(0.15 0 0);
+  --offwhite: oklch(0.975 0.002 90);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.15 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.15 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.96 0.002 90);
+  --secondary-foreground: oklch(0.15 0 0);
+  --muted: oklch(0.96 0.002 90);
+  --muted-foreground: oklch(0.5 0.01 90);
+  --accent: oklch(0.75 0.13 86);
+  --accent-foreground: oklch(0.15 0 0);
+  --border: oklch(0.92 0.004 90);
+  --input: oklch(0.92 0.004 90);
+  --ring: oklch(0.75 0.13 86);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@utility glass {
+  background-color: color-mix(in oklab, var(--background) 70%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+}
+
+@utility text-balance-pretty {
+  text-wrap: balance;
 }

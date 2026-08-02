@@ -1,24 +1,114 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { About } from "@/components/site/About";
+import { BackToTop } from "@/components/site/BackToTop";
+import { BeforeAfter } from "@/components/site/BeforeAfter";
+import { CtaSection } from "@/components/site/CtaSection";
+import { Differentials } from "@/components/site/Differentials";
+import { Footer } from "@/components/site/Footer";
+import { Gallery } from "@/components/site/Gallery";
+import { Header } from "@/components/site/Header";
+import { Hero } from "@/components/site/Hero";
+import { InstagramSection } from "@/components/site/InstagramSection";
+import { Reviews } from "@/components/site/Reviews";
+import { Services } from "@/components/site/Services";
+import { TopBanner } from "@/components/site/TopBanner";
+import { LocationHours } from "@/components/site/LocationHours";
+
+const TITLE = "SÜ Hair Concept | Beauty Experience";
+const DESCRIPTION =
+  "Conheça o SÜ Hair Concept em Moema, São Paulo. Um salão premium com profissionais especializados, atendimento exclusivo, coloração, mega hair, luzes e tratamentos capilares.";
+
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      {
+        name: "keywords",
+        content:
+          "salão de beleza, cabeleireiro Moema, mega hair, morena iluminada, luzes, coloração, hair concept, salão premium São Paulo",
+      },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { property: "og:locale", content: "pt_BR" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HairSalon",
+          name: "SÜ Hair Concept",
+          description: DESCRIPTION,
+          telephone: "+55 11 5042-1518",
+          priceRange: "$$$",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Av. Pavão, 362",
+            addressLocality: "São Paulo",
+            addressRegion: "SP",
+            postalCode: "04516-010",
+            addressCountry: "BR",
+          },
+          sameAs: ["https://www.instagram.com/suhairconcept/"],
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.9",
+            reviewCount: "742",
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday"],
+              opens: "09:00",
+              closes: "20:00",
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Thursday", "Friday"],
+              opens: "09:00",
+              closes: "21:00",
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Saturday"],
+              opens: "08:00",
+              closes: "19:00",
+            },
+          ],
+        }),
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <TopBanner />
+      <Header />
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <Differentials />
+        <BeforeAfter />
+        <Gallery />
+        <Reviews />
+        <CtaSection />
+        <LocationHours />
+        <InstagramSection />
+      </main>
+      <Footer />
+      <BackToTop />
     </div>
   );
 }
