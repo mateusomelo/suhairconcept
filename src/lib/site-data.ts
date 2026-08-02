@@ -3,7 +3,8 @@ export const SITE = {
   tagline: "Beauty Experience",
   phone: "(11) 5042-1518",
   phoneHref: "tel:+551150421518",
-  whatsapp: "https://wa.me/551150421518",
+  whatsapp:
+    "https://wa.me/5511914981956?text=Ola%20gostaria%20de%20agendar%20um%20hor%C3%A1rio",
   instagram: "https://www.instagram.com/suhairconcept/",
   address: {
     street: "Av. Pavão, 362",
