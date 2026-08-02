@@ -22,8 +22,10 @@ export const NAV_LINKS = [
   { label: "Início", href: "#inicio" },
   { label: "Sobre", href: "#sobre" },
   { label: "Serviços", href: "#servicos" },
+  { label: "Mega Hair", href: "#megahair" },
   { label: "Resultados", href: "#resultados" },
   { label: "Avaliações", href: "#avaliacoes" },
+  { label: "Dúvidas", href: "#duvidas" },
   { label: "Localização", href: "#localizacao" },
   { label: "Contato", href: "#contato" },
 ];
