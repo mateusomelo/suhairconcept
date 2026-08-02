@@ -102,11 +102,14 @@ function Index() {
         <Hero />
         <About />
         <Services />
+        <MegaHair />
         <Differentials />
+        <Philosophy />
         <BeforeAfter />
         <Gallery />
         <Reviews />
         <CtaSection />
+        <Faq />
         <LocationHours />
         <InstagramSection />
       </main>
