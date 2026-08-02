@@ -78,8 +78,8 @@ export function Gallery() {
               initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
-              src={IMAGES[active].src}
-              alt={IMAGES[active].alt}
+              src={IMAGES[active]!.src}
+              alt={IMAGES[active]!.alt}
               className="max-h-[85vh] max-w-full object-contain"
             />
           </motion.div>

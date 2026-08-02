@@ -17,7 +17,7 @@ const SLIDES = [
 
 export function BeforeAfter() {
   const [index, setIndex] = useState(0);
-  const slide = SLIDES[index];
+  const slide = SLIDES[index]!;
 
   const go = (dir: number) => setIndex((i) => (i + dir + SLIDES.length) % SLIDES.length);
 
