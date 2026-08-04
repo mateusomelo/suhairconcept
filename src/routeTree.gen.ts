@@ -10,11 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MegahairRouteImport } from './routes/megahair'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as UnhasRouteImport } from './routes/unhas'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MegahairRoute = MegahairRouteImport.update({
+  id: '/megahair',
+  path: '/megahair',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -22,31 +29,44 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UnhasRoute = UnhasRouteImport.update({
+  id: '/unhas',
+  path: '/unhas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/megahair': typeof MegahairRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/unhas': typeof UnhasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/megahair': typeof MegahairRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/unhas': typeof UnhasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/megahair': typeof MegahairRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/unhas': typeof UnhasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sitemap.xml'
+  fullPaths: '/' | '/megahair' | '/sitemap.xml' | '/unhas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sitemap.xml'
-  id: '__root__' | '/' | '/sitemap.xml'
+  to: '/' | '/megahair' | '/sitemap.xml' | '/unhas'
+  id: '__root__' | '/' | '/megahair' | '/sitemap.xml' | '/unhas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MegahairRoute: typeof MegahairRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  UnhasRoute: typeof UnhasRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +78,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/megahair': {
+      id: '/megahair'
+      path: '/megahair'
+      fullPath: '/megahair'
+      preLoaderRoute: typeof MegahairRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -65,12 +92,21 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/unhas': {
+      id: '/unhas'
+      path: '/unhas'
+      fullPath: '/unhas'
+      preLoaderRoute: typeof UnhasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MegahairRoute: MegahairRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  UnhasRoute: UnhasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
