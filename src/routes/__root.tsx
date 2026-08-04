@@ -89,10 +89,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "theme-color", content: "#111111" },
       { property: "og:title", content: "SÜ Hair Concept | Beauty Experience" },
       { name: "twitter:title", content: "SÜ Hair Concept | Beauty Experience" },
-      { property: "og:description", content: "Salão premium em Indianópolis, São Paulo. Coloração, mega hair, luzes e tratamentos capilares com atendimento exclusivo." },
-      { name: "twitter:description", content: "Salão premium em Indianópolis, São Paulo. Coloração, mega hair, luzes e tratamentos capilares com atendimento exclusivo." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0c8916f9-ef1c-4cfd-b73d-c91cb95bdb0f/id-preview-564b33f7--2f719599-e399-4384-a060-c8909a93ac6c.lovable.app-1785640930630.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0c8916f9-ef1c-4cfd-b73d-c91cb95bdb0f/id-preview-564b33f7--2f719599-e399-4384-a060-c8909a93ac6c.lovable.app-1785640930630.png" },
+      {
+        property: "og:description",
+        content:
+          "Salão premium em Indianópolis, São Paulo. Coloração, mega hair, luzes e tratamentos capilares com atendimento exclusivo.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Salão premium em Indianópolis, São Paulo. Coloração, mega hair, luzes e tratamentos capilares com atendimento exclusivo.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0c8916f9-ef1c-4cfd-b73d-c91cb95bdb0f/id-preview-564b33f7--2f719599-e399-4384-a060-c8909a93ac6c.lovable.app-1785640930630.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0c8916f9-ef1c-4cfd-b73d-c91cb95bdb0f/id-preview-564b33f7--2f719599-e399-4384-a060-c8909a93ac6c.lovable.app-1785640930630.png",
+      },
     ],
     links: [
       {

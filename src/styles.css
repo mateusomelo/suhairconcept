@@ -204,6 +204,61 @@
   text-wrap: balance;
 }
 
+/* Texto das matérias do blog, gerado pelo react-markdown */
+.post-conteudo {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--foreground);
+}
+.post-conteudo > * + * {
+  margin-top: 1.5rem;
+}
+.post-conteudo h2 {
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-top: 3rem;
+}
+.post-conteudo h3 {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+}
+.post-conteudo a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.post-conteudo strong {
+  font-weight: 600;
+}
+.post-conteudo ul,
+.post-conteudo ol {
+  padding-left: 1.25rem;
+}
+.post-conteudo ul {
+  list-style: disc;
+}
+.post-conteudo ol {
+  list-style: decimal;
+}
+.post-conteudo li + li {
+  margin-top: 0.5rem;
+}
+.post-conteudo blockquote {
+  border-left: 2px solid var(--gold);
+  padding-left: 1.25rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-style: italic;
+}
+.post-conteudo img {
+  width: 100%;
+  height: auto;
+}
+
 @utility nail-page {
   --primary: var(--wine);
   --primary-foreground: oklch(0.99 0.004 25);
