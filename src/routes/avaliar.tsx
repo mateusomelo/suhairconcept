@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Check, Loader2, MapPin, Star } from "lucide-react";
 
-import logoSu from "@/assets/logo-su.png";
+import logoSu from "@/assets/logo-su-marca.png";
 import { SITE } from "@/lib/site-data";
 import { supabase } from "@/lib/supabase";
 

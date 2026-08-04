@@ -8,10 +8,7 @@ import { gerarSlug, supabase, type Post } from "@/lib/supabase";
 export const Route = createFileRoute("/admin")({
   component: AdminPage,
   head: () => ({
-    meta: [
-      { title: "Painel | SÜ Hair Concept" },
-      { name: "robots", content: "noindex, nofollow" },
-    ],
+    meta: [{ title: "Painel | SÜ Hair Concept" }, { name: "robots", content: "noindex, nofollow" }],
   }),
 });
 

@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, MessageCircle } from "lucide-react";
 import type { ReactNode } from "react";
 
+import logoSu from "@/assets/logo-su-marca.png";
 import { SITE } from "@/lib/site-data";
 
 export function formatarData(iso: string): string {
@@ -17,8 +18,14 @@ export function BlogShell({ children }: { children: ReactNode }) {
     <div className="flex min-h-svh flex-col bg-background text-foreground">
       <header className="border-b border-border">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
-          <a href="/" className="font-display text-xl tracking-[0.2em]">
-            SÜ<span className="text-gold">.</span>
+          <a href="/" aria-label="SÜ Hair Concept — início" className="flex items-center">
+            <img
+              src={logoSu}
+              alt="SÜ Hair Concept"
+              width={112}
+              height={112}
+              className="h-9 w-auto object-contain"
+            />
           </a>
           <nav className="flex items-center gap-7 text-xs uppercase tracking-[0.14em]">
             <Link to="/blog" className="hover:text-gold">

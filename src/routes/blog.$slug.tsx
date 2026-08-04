@@ -44,7 +44,9 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:description", content: descricao },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
-        ...(loaderData.imagem_url ? [{ property: "og:image", content: loaderData.imagem_url }] : []),
+        ...(loaderData.imagem_url
+          ? [{ property: "og:image", content: loaderData.imagem_url }]
+          : []),
         { name: "twitter:card", content: "summary_large_image" },
       ],
       links: [{ rel: "canonical", href: url }],

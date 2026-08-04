@@ -12,6 +12,7 @@ import {
   Star,
 } from "lucide-react";
 
+import logoSu from "@/assets/logo-su-marca.png";
 import megaHero from "@/assets/mega-hero.jpg";
 import megaResult from "@/assets/mega-result.jpg";
 import testimonialPoster from "@/assets/megahair-depoimento-poster.jpg";
@@ -141,8 +142,14 @@ function MegaHairLanding() {
     <div className="bg-background text-foreground">
       <header className="absolute inset-x-0 top-0 z-20 border-b border-background/20">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-          <a href="/" className="font-display text-xl tracking-[0.2em] text-background">
-            SÜ<span className="text-gold">.</span>
+          <a href="/" aria-label="SÜ Hair Concept — início" className="flex items-center">
+            <img
+              src={logoSu}
+              alt="SÜ Hair Concept"
+              width={112}
+              height={112}
+              className="h-9 w-auto object-contain"
+            />
           </a>
           <a
             href="#tecnicas"

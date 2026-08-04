@@ -3,6 +3,7 @@ import { Menu, Sparkles, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 
+import logoSu from "@/assets/logo-su-marca.png";
 import { NAV_LINKS, SITE } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
@@ -25,14 +26,14 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-10">
-        <Link
-          to="/"
-          className={cn(
-            "font-display text-lg tracking-[0.28em] transition-colors",
-            scrolled ? "text-foreground" : "text-white",
-          )}
-        >
-          SÜ<span className="text-gold">.</span>
+        <Link to="/" aria-label="SÜ Hair Concept — início" className="flex items-center">
+          <img
+            src={logoSu}
+            alt="SÜ Hair Concept"
+            width={112}
+            height={112}
+            className="h-9 w-auto object-contain sm:h-10"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
