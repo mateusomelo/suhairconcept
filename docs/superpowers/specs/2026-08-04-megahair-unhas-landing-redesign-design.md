@@ -18,8 +18,10 @@ number is not.
 
 ## Goals
 
-1. Place the client-provided video (`IMG_0555.mp4`, real mega hair result
-   footage from `suhairconcept.com.br`) in the `/megahair` hero.
+1. Place the client-provided video (`IMG_0555.mp4`, a spoken testimonial/
+   process reel with burned-in synced captions and a "Studio Über" bug —
+   inspected by extracting frames, not a silent B-roll) on `/megahair` in a
+   click-to-play testimonial section.
 2. Fix `/unhas` so every booking CTA reaches the real business (`SITE.whatsapp`)
    and the page reads as part of SÜ Hair Concept rather than an unrelated site.
 3. Modernize both pages visually (motion, hierarchy, mobile conversion) using
@@ -44,10 +46,13 @@ number is not.
 
 ### `/megahair`
 
-- **Hero**: replace the static `mega-hero.jpg` background with an autoplay,
-  muted, looped, `playsinline` `<video>` of `IMG_0555.mp4`, using
-  `mega-hero.jpg` as the `poster` (fallback while the video loads / if it
-  fails).
+- **Hero**: unchanged — stays on the static `mega-hero.jpg` background. A
+  muted autoplay loop doesn't work for this clip since it's a spoken
+  testimonial with timed captions, not ambient B-roll.
+- **New "Depoimento em vídeo" section**: click-to-play video card between the
+  hero and the techniques section. Shows a poster frame (extracted from the
+  video) with a play button overlay; clicking swaps in a native `<video
+  controls>` element that plays with sound. Not autoplay, not looped.
 - **New "Missão · Visão · Valores" section**: three cards using the verified
   text from `suhairconcept.com.br/megahair/`:
   - Missão: "Somos pessoas cuidando de pessoas, criando experiências
