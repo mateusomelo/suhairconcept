@@ -1,4 +1,5 @@
 import { Instagram, MapPin, Phone } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 import { NAV_LINKS, SITE } from "@/lib/site-data";
 
@@ -34,9 +35,14 @@ export function Footer() {
           <div>
             <nav className="flex flex-wrap gap-x-5 gap-y-2">
               {NAV_LINKS.map((l) => (
-                <a key={l.href} href={l.href} className="text-xs transition-colors hover:text-gold">
+                <Link
+                  key={l.href}
+                  to={l.href.startsWith("/") ? l.href : "/"}
+                  {...(l.href.startsWith("#") ? { hash: l.href.slice(1) } : {})}
+                  className="text-xs transition-colors hover:text-gold"
+                >
                   {l.label}
-                </a>
+                </Link>
               ))}
             </nav>
             <a
