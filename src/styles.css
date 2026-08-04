@@ -63,11 +63,12 @@
   --color-gold-soft: var(--gold-soft);
   --color-ink: var(--ink);
   --color-offwhite: var(--offwhite);
+  --color-nude: var(--nude);
   --color-wine: var(--wine);
   --color-blush: var(--blush);
   --color-rose-ink: var(--rose-ink);
-  --font-display: "Playfair Display", serif;
-  --font-sans: "Poppins", sans-serif;
+  --font-display: "Playfair Display", "Didot", serif;
+  --font-sans: "Montserrat", sans-serif;
 }
 
 
@@ -153,31 +154,32 @@
   }
 }
 
-/* SÜ Hair Concept — brand tokens */
+/* SÜ Hair Concept — brand tokens (Brand Book Old Money) */
 :root {
   --radius: 0.25rem;
-  --gold: oklch(0.75 0.13 86);
-  --gold-soft: oklch(0.86 0.07 90);
-  --ink: oklch(0.15 0 0);
-  --offwhite: oklch(0.975 0.002 90);
+  --gold: #cfae70; /* Champagne Gold — acento, 5 a 15% do design */
+  --gold-soft: #e3cfa4;
+  --ink: #0b0b0b; /* Black Onyx */
+  --offwhite: #faf8f5; /* Ivory White */
+  --nude: #d8c2b1; /* Cashmere Nude */
   --wine: oklch(0.38 0.15 24);
   --blush: oklch(0.95 0.025 24);
   --rose-ink: oklch(0.23 0.035 24);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.15 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0 0);
-  --primary: oklch(0.15 0 0);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.96 0.002 90);
-  --secondary-foreground: oklch(0.15 0 0);
-  --muted: oklch(0.96 0.002 90);
-  --muted-foreground: oklch(0.5 0.01 90);
-  --accent: oklch(0.75 0.13 86);
-  --accent-foreground: oklch(0.15 0 0);
-  --border: oklch(0.92 0.004 90);
-  --input: oklch(0.92 0.004 90);
-  --ring: oklch(0.75 0.13 86);
+  --background: #ffffff;
+  --foreground: #0b0b0b;
+  --card: #ffffff;
+  --card-foreground: #0b0b0b;
+  --primary: #0b0b0b;
+  --primary-foreground: #ffffff;
+  --secondary: #f3efe9;
+  --secondary-foreground: #0b0b0b;
+  --muted: #f3efe9;
+  --muted-foreground: #6c655e;
+  --accent: #cfae70;
+  --accent-foreground: #0b0b0b;
+  --border: #e7dfd6;
+  --input: #e7dfd6;
+  --ring: #cfae70;
 }
 
 @layer base {
@@ -211,5 +213,5 @@
   --muted: var(--blush);
   --muted-foreground: oklch(0.48 0.035 25);
   --border: oklch(0.88 0.035 25);
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
