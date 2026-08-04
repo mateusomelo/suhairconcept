@@ -38,7 +38,7 @@ export function Footer() {
                 <Link
                   key={l.href}
                   to={l.href.startsWith("/") ? l.href : "/"}
-                  hash={l.href.startsWith("#") ? l.href.slice(1) : undefined}
+                  {...(l.href.startsWith("#") ? { hash: l.href.slice(1) } : {})}
                   className="text-xs transition-colors hover:text-gold"
                 >
                   {l.label}

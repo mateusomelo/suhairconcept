@@ -40,7 +40,7 @@ export function Header() {
             <Link
               key={link.href}
               to={link.href.startsWith("/") ? link.href : "/"}
-              hash={link.href.startsWith("#") ? link.href.slice(1) : undefined}
+              {...(link.href.startsWith("#") ? { hash: link.href.slice(1) } : {})}
               className={cn(
                 "relative text-[13px] tracking-wide transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100",
                 scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/80 hover:text-white",
@@ -85,7 +85,7 @@ export function Header() {
               <Link
                 key={link.href}
                 to={link.href.startsWith("/") ? link.href : "/"}
-                hash={link.href.startsWith("#") ? link.href.slice(1) : undefined}
+                {...(link.href.startsWith("#") ? { hash: link.href.slice(1) } : {})}
                 onClick={() => setOpen(false)}
                 className="border-b border-border/40 py-3 text-sm text-foreground last:border-0"
               >
