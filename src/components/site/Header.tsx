@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Menu, Sparkles, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 
 import { NAV_LINKS, SITE } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
@@ -24,28 +25,29 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-10">
-        <a
-          href="#inicio"
+        <Link
+          to="/"
           className={cn(
             "font-display text-lg tracking-[0.28em] transition-colors",
             scrolled ? "text-foreground" : "text-white",
           )}
         >
           SÜ<span className="text-gold">.</span>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              to={link.href.startsWith("/") ? link.href : "/"}
+              hash={link.href.startsWith("#") ? link.href.slice(1) : undefined}
               className={cn(
                 "relative text-[13px] tracking-wide transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100",
                 scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/80 hover:text-white",
               )}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -80,14 +82,15 @@ export function Header() {
         >
           <div className="flex flex-col px-6 py-4">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                to={link.href.startsWith("/") ? link.href : "/"}
+                hash={link.href.startsWith("#") ? link.href.slice(1) : undefined}
                 onClick={() => setOpen(false)}
                 className="border-b border-border/40 py-3 text-sm text-foreground last:border-0"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <a
               href={SITE.whatsapp}
