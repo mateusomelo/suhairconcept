@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-// TODO: replace with your project URL once a project name or custom domain is set.
-const BASE_URL = "";
+const BASE_URL = "https://suhairconcept.lovable.app";
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
@@ -15,6 +14,16 @@ export const Route = createFileRoute("/sitemap.xml")({
           `    <loc>${BASE_URL}/</loc>`,
           `    <changefreq>weekly</changefreq>`,
           `    <priority>1.0</priority>`,
+          `  </url>`,
+          `  <url>`,
+          `    <loc>${BASE_URL}/megahair</loc>`,
+          `    <changefreq>monthly</changefreq>`,
+          `    <priority>0.9</priority>`,
+          `  </url>`,
+          `  <url>`,
+          `    <loc>${BASE_URL}/unhas</loc>`,
+          `    <changefreq>monthly</changefreq>`,
+          `    <priority>0.9</priority>`,
           `  </url>`,
           `</urlset>`,
         ].join("\n");
