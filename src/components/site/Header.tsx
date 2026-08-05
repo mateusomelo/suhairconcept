@@ -57,6 +57,25 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
+          {/* No celular o menu fica atrás do ícone de três riscos, o que
+              escondia as duas ações que mais importam. Ficam visíveis
+              aqui e somem no desktop, onde o menu já as mostra. */}
+          <a
+            href="/blog"
+            className={cn(
+              "text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors lg:hidden",
+              scrolled ? "text-foreground hover:text-gold" : "text-white/90 hover:text-gold",
+            )}
+          >
+            Blog
+          </a>
+          <a
+            href="/avaliar"
+            className="flex min-h-9 items-center rounded-full border border-gold px-3.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-gold lg:hidden"
+          >
+            Avaliar
+          </a>
+
           <motion.a
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
