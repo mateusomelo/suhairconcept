@@ -5,7 +5,7 @@ import { BackToTop } from "@/components/site/BackToTop";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Differentials } from "@/components/site/Differentials";
-import { Faq } from "@/components/site/Faq";
+import { Faq, FAQ_GRUPOS } from "@/components/site/Faq";
 import { Footer } from "@/components/site/Footer";
 import { Gallery } from "@/components/site/Gallery";
 import { Header } from "@/components/site/Header";
@@ -43,6 +43,22 @@ export const Route = createFileRoute("/")({
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
+      {
+        // Perguntas frequentes marcadas para o Google — podem aparecer
+        // expandidas direto no resultado de busca.
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_GRUPOS.flatMap((grupo) =>
+            grupo.perguntas.map((item) => ({
+              "@type": "Question",
+              name: item.q,
+              acceptedAnswer: { "@type": "Answer", text: item.a },
+            })),
+          ),
+        }),
+      },
       {
         type: "application/ld+json",
         children: JSON.stringify({

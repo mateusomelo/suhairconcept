@@ -7,30 +7,112 @@ import {
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
 import { SITE } from "@/lib/site-data";
 
-const FAQ = [
+/**
+ * Perguntas por serviço. As de mega hair vêm do atendimento do salão; as
+ * demais foram trazidas do site anterior (studiouber.com.br), onde já
+ * estavam publicadas e respondidas pela equipe.
+ */
+export const FAQ_GRUPOS = [
   {
-    q: "O mega hair danifica o meu cabelo?",
-    a: "Não. Nossa técnica é aplicada sem tração e sem agredir os fios, garantindo uma experiência confortável e a saúde do seu cabelo natural.",
+    titulo: "Mega hair",
+    perguntas: [
+      {
+        q: "O mega hair danifica o meu cabelo?",
+        a: "Não. Nossa técnica é aplicada sem tração e sem agredir os fios, garantindo uma experiência confortável e a saúde do seu cabelo natural.",
+      },
+      {
+        q: "Os fios são naturais?",
+        a: "Sim, trabalhamos apenas com cabelos 100% humanos, selecionados fio a fio para garantir movimento, brilho e aparência completamente real.",
+      },
+      {
+        q: "Qual técnica é a ideal para mim?",
+        a: "Fita adesiva, ponto americano, invisível ou queratina — a indicação é feita no diagnóstico gratuito, considerando espessura, densidade e rotina do seu cabelo.",
+      },
+      {
+        q: "A avaliação tem custo?",
+        a: "Não. O diagnóstico capilar é totalmente gratuito e sem compromisso.",
+      },
+    ],
   },
   {
-    q: "Os fios são naturais?",
-    a: "Sim, trabalhamos apenas com cabelos 100% humanos, selecionados fio a fio para garantir movimento, brilho e aparência completamente real.",
+    titulo: "Escova e baby liss",
+    perguntas: [
+      {
+        q: "Qual é a diferença entre escova e baby liss?",
+        a: "A escova geralmente cria um visual liso e reto, enquanto o baby liss produz ondas ou cachos no cabelo.",
+      },
+      {
+        q: "Quanto tempo dura o efeito da escova e do baby liss?",
+        a: "O tempo pode variar dependendo do tipo de cabelo e das condições climáticas, mas geralmente a escova dura de 1 a 3 dias, enquanto o baby liss pode durar de 6 a 8 horas.",
+      },
+      {
+        q: "Qual é o melhor tipo de cabelo para receber uma escova ou baby liss?",
+        a: "A escova é adequada para cabelos lisos ou levemente ondulados, enquanto o baby liss é ótimo para adicionar textura a cabelos naturalmente lisos.",
+      },
+      {
+        q: "O serviço de escova ou baby liss danifica o cabelo?",
+        a: "Quando feito por um profissional qualificado e usando produtos de proteção térmica, o dano ao cabelo é mínimo.",
+      },
+    ],
   },
   {
-    q: "Quanto tempo dura a aplicação?",
-    a: "Depende da técnica escolhida e do volume desejado. Na avaliação gratuita a especialista informa o tempo exato do seu procedimento.",
+    titulo: "Design de sobrancelha e brow lamination",
+    perguntas: [
+      {
+        q: "Qual é a diferença entre design e brow lamination?",
+        a: "O design é modelar e definir as sobrancelhas, enquanto o brow lamination alisa e modela os fios.",
+      },
+      {
+        q: "Quanto tempo duram os efeitos?",
+        a: "O design dura de 2 a 4 semanas; o lamination dura de 4 a 6 semanas.",
+      },
+      {
+        q: "O lamination danifica os fios?",
+        a: "Quando realizado por profissional qualificado, é um tratamento seguro.",
+      },
+      {
+        q: "Quais são os benefícios do lamination?",
+        a: "Pode ajudar a alinhar fios, preencher falhas, criar um visual mais volumoso e reduzir a necessidade de produtos diários.",
+      },
+    ],
   },
   {
-    q: "Qual técnica é a ideal para mim?",
-    a: "Fita adesiva, ponto americano, invisível ou queratina — a indicação é feita no diagnóstico gratuito, considerando espessura, densidade e rotina do seu cabelo.",
+    titulo: "Alongamento de cílios",
+    perguntas: [
+      {
+        q: "O que é o alongamento de cílios?",
+        a: "Procedimento onde cílios sintéticos são aplicados aos cílios naturais para criar um visual mais longo e volumoso.",
+      },
+      {
+        q: "Quanto tempo dura?",
+        a: "Geralmente pode durar de 4 a 6 semanas antes de ser necessário um preenchimento.",
+      },
+      {
+        q: "Danifica os cílios naturais?",
+        a: "Quando realizado por profissional experiente, não deve danificar os cílios naturais.",
+      },
+      {
+        q: "Quais são os tipos?",
+        a: "Clássico e volume russo são os mais comuns.",
+      },
+    ],
   },
   {
-    q: "Preciso agendar com antecedência?",
-    a: "Sim. As vagas para novas clientes são limitadas por semana, pois cada atendimento é individual e exclusivo.",
-  },
-  {
-    q: "A avaliação tem custo?",
-    a: "Não. O diagnóstico capilar é totalmente gratuito e sem compromisso.",
+    titulo: "Manicure e pedicure",
+    perguntas: [
+      {
+        q: "Com que frequência devo fazer manicure e pedicure?",
+        a: "Geralmente é recomendado fazer uma manicure e pedicure a cada duas semanas.",
+      },
+      {
+        q: "Quais são os benefícios de fazer com um profissional?",
+        a: "Podem ajudar a melhorar a saúde das unhas e da pele ao redor, prevenir infecções e promover relaxamento.",
+      },
+      {
+        q: "É seguro fazer durante a gravidez?",
+        a: "Geralmente, sim. No entanto, é importante informar a profissional sobre a gravidez.",
+      },
+    ],
   },
 ];
 
@@ -45,27 +127,34 @@ export function Faq() {
           </h2>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <Accordion type="single" collapsible className="mt-10 border-t border-border">
-            {FAQ.map((item) => (
-              <AccordionItem key={item.q} value={item.q} className="border-border">
-                <AccordionTrigger className="text-left font-display text-base hover:text-gold hover:no-underline">
-                  {item.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-                  {item.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </Reveal>
+        {FAQ_GRUPOS.map((grupo, gi) => (
+          <Reveal key={grupo.titulo} delay={0.05 + gi * 0.04}>
+            <div className="mt-12 first:mt-10">
+              <h3 className="text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">
+                {grupo.titulo}
+              </h3>
+              <Accordion type="single" collapsible className="mt-4 border-t border-border">
+                {grupo.perguntas.map((item) => (
+                  <AccordionItem key={item.q} value={item.q} className="border-border">
+                    <AccordionTrigger className="text-left font-display text-base hover:text-gold hover:no-underline">
+                      {item.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </Reveal>
+        ))}
 
         <Reveal delay={0.15}>
           <a
             href={SITE.whatsapp}
             target="_blank"
             rel="noreferrer"
-            className="mt-10 inline-flex items-center justify-center border border-foreground px-8 py-3.5 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors hover:border-gold hover:bg-gold hover:text-black"
+            className="mt-12 inline-flex items-center justify-center border border-foreground px-8 py-3.5 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors hover:border-gold hover:bg-gold hover:text-black"
           >
             Ainda estou com dúvidas
           </a>
