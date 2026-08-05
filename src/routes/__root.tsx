@@ -133,7 +133,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    // O site é em português. Declarar "en" fazia o Chrome traduzir a
+    // página sozinho, e a tradução automática troca os nós de texto por
+    // baixo do React — o que derrubava telas interativas como o /admin.
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
