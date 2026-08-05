@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { MapPin, Sparkles } from "lucide-react";
 
-import heroImage from "@/assets/hero-salon.jpg";
+import heroImage from "@/assets/hero-fachada.jpg";
 import { SITE } from "@/lib/site-data";
 
 export function Hero() {

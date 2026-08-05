@@ -15,7 +15,6 @@ import { MegaHair } from "@/components/site/MegaHair";
 import { Philosophy } from "@/components/site/Philosophy";
 import { Reviews } from "@/components/site/Reviews";
 import { Services } from "@/components/site/Services";
-import { TopBanner } from "@/components/site/TopBanner";
 import { LocationHours } from "@/components/site/LocationHours";
 
 const TITLE = "SÜ Hair Concept | Beauty Experience";
@@ -96,7 +95,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-screen bg-background">
-      <TopBanner />
       <Header />
       <main>
         <Hero />

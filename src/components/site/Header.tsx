@@ -21,7 +21,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-[38px] z-50 transition-all duration-500 sm:top-[46px]",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled
           ? "glass border-b border-border/60 shadow-[0_8px_30px_-18px_rgba(0,0,0,0.5)]"
           : "bg-transparent",

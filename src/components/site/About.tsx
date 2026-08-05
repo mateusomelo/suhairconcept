@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import aboutImage from "@/assets/about-salon.jpg";
+import aboutImage from "@/assets/sobre-salao.jpg";
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
 
 const PILLARS = [

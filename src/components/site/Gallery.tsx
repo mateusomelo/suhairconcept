@@ -2,14 +2,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useState } from "react";
 
-import about from "@/assets/about-salon.jpg";
+import g7 from "@/assets/gal-7.jpg";
 import g1 from "@/assets/gal-1.jpg";
 import g2 from "@/assets/gal-2.jpg";
 import g3 from "@/assets/gal-3.jpg";
 import g4 from "@/assets/gal-4.jpg";
 import g5 from "@/assets/gal-5.jpg";
 import g6 from "@/assets/gal-6.jpg";
-import hero from "@/assets/hero-salon.jpg";
+import g8 from "@/assets/gal-8.jpg";
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
 
 const IMAGES = [
@@ -17,9 +17,9 @@ const IMAGES = [
   { src: g5, alt: "Estação de trabalho do salão com detalhes dourados" },
   { src: g2, alt: "Loiro com mechas iluminadas" },
   { src: g4, alt: "Mega hair com ondas volumosas" },
-  { src: about, alt: "Profissional em atendimento no salão" },
+  { src: g7, alt: "Morena iluminada com ondas longas" },
   { src: g3, alt: "Corte feminino bob preciso" },
-  { src: hero, alt: "Ambiente sofisticado do salão" },
+  { src: g8, alt: "Loiro iluminado com acabamento natural" },
   { src: g6, alt: "Penteado de noiva elegante" },
 ];
 

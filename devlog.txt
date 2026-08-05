@@ -1,0 +1,48 @@
+[33mThe plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the [1mresolve.tsconfigPaths[22m option. You can remove the plugin and set [1mresolve.tsconfigPaths: true[22m in your Vite config instead.[39m
+
+  [32m[1mVITE[22m v8.2.0[39m  [2mready in [0m[1m4313[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4321[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.0.7:[1m4321[22m/[39m  [2mEthernet[22m
+[2m22:07:15[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m connected.
+[2m22:11:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/components/site/Hero.tsx[22m
+[2m22:11:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/components/site/Hero.tsx[22m
+[2m22:11:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m program reload
+[2m22:11:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/components/site/Gallery.tsx[22m
+[2m22:11:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/components/site/Gallery.tsx[22m
+[2m22:11:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/components/site/About.tsx[22m
+[2m22:11:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/components/site/About.tsx[22m
+[2m22:11:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/megahair.tsx, /src/routes/megahair.tsx?tsr-split=component[22m
+[2m22:11:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/megahair.tsx[22m
+[2m22:11:28[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] ReferenceError: about is not defined
+    at http://localhost:4321/src/components/site/Gallery.tsx?t=1785892288356:32:8
+[2m22:11:28[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] Failed to reload /src/components/site/Gallery.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+[2m22:11:46[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/components/site/Gallery.tsx[22m
+[2m22:11:46[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/components/site/Gallery.tsx[22m
+[2m22:12:30[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/index.tsx, /src/routes/index.tsx?tsr-split=component[22m
+[2m22:12:30[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/index.tsx[22m
+[2m22:12:30[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/components/site/Header.tsx[22m
+[2m22:12:30[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/components/site/Header.tsx[22m
+[2m22:14:19[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/site/Hero.tsx[22m
+[2m22:14:19[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/assets/hero-fachada.jpg[22m
+[2m22:14:19[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m program reload
+[2m22:21:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/unhas.tsx, /src/routes/unhas.tsx?tsr-split=component[22m
+[2m22:21:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/unhas.tsx[22m
+[2m22:21:54[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m program reload
+[2m22:22:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/unhas.tsx, /src/routes/unhas.tsx?tsr-split=component[22m
+[2m22:22:08[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/unhas.tsx[22m
+[2m22:22:21[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/unhas.tsx, /src/routes/unhas.tsx?tsr-split=component[22m
+[2m22:22:21[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/unhas.tsx[22m
+[2m22:23:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/megahair.tsx, /src/routes/megahair.tsx?tsr-split=component[22m
+[2m22:23:18[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/megahair.tsx[22m
+[2m22:23:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/megahair.tsx, /src/routes/megahair.tsx?tsr-split=component[22m
+[2m22:23:52[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/megahair.tsx[22m
+[2m22:24:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/megahair.tsx, /src/routes/megahair.tsx?tsr-split=component[22m
+[2m22:24:07[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/megahair.tsx[22m
+[2m22:30:47[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/site/Hero.tsx[22m
+[2m22:30:47[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/assets/hero-fachada.jpg[22m
+[2m22:30:47[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m program reload
+[2m22:31:02[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/unhas.tsx, /src/routes/unhas.tsx?tsr-split=component[22m
+[2m22:31:02[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/unhas.tsx[22m
+[2m22:31:15[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/unhas.tsx, /src/routes/unhas.tsx?tsr-split=component[22m
+[2m22:31:15[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/unhas.tsx[22m

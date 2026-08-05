@@ -12,6 +12,18 @@ import {
   Star,
 } from "lucide-react";
 
+import unAcri1 from "@/assets/un-acri1.jpg";
+import unAcri2 from "@/assets/un-acri2.jpg";
+import unBlind1 from "@/assets/un-blind1.jpg";
+import unFibra1 from "@/assets/un-fibra1.jpg";
+import unFibra2 from "@/assets/un-fibra2.jpg";
+import unGel1 from "@/assets/un-gel1.jpg";
+import unMani1 from "@/assets/un-mani1.jpg";
+import unMani2 from "@/assets/un-mani2.jpg";
+import unMani3 from "@/assets/un-mani3.jpg";
+import unMani4 from "@/assets/un-mani4.jpg";
+import unGel2 from "@/assets/un-gel2.jpg";
+import unGel3 from "@/assets/un-gel3.jpg";
 import nailsDetail from "@/assets/unhas-detalhe.jpg";
 import nailsHero from "@/assets/unhas-hero.jpg";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
@@ -21,6 +33,22 @@ import { SITE } from "@/lib/site-data";
 const TITLE = "Alongamento de Unhas | Studio Über — SÜ Hair Concept";
 const DESCRIPTION =
   "Alongamento de unhas com acabamento delicado e alta durabilidade no Studio Über, o espaço de unhas da SÜ Hair Concept, em Moema.";
+
+// Trabalhos reais do estúdio, agrupados pela técnica usada em cada um.
+const GALERIA = [
+  { src: unAcri1, tecnica: "Acrílico" },
+  { src: unGel1, tecnica: "Gel" },
+  { src: unMani1, tecnica: "Manicure" },
+  { src: unFibra1, tecnica: "Fibra de vidro" },
+  { src: unBlind1, tecnica: "Blindagem" },
+  { src: unMani2, tecnica: "Manicure" },
+  { src: unGel2, tecnica: "Gel" },
+  { src: unAcri2, tecnica: "Acrílico" },
+  { src: unMani3, tecnica: "Manicure" },
+  { src: unFibra2, tecnica: "Fibra de vidro" },
+  { src: unGel3, tecnica: "Gel" },
+  { src: unMani4, tecnica: "Manicure" },
+];
 
 const services = [
   [
@@ -237,7 +265,40 @@ function NailsLanding() {
           </Reveal>
         </section>
 
-        <section className="bg-muted py-24 text-center">
+        <section id="galeria" className="bg-muted py-24 lg:py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                Nossos trabalhos
+              </p>
+              <h2 className="mt-4 font-display text-4xl sm:text-5xl">
+                Unhas perfeitas, toque de elegância.
+              </h2>
+              <p className="mt-5 text-sm leading-7 text-muted-foreground">
+                Cada técnica tem seu acabamento. Veja resultados reais de clientes.
+              </p>
+            </Reveal>
+            <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {GALERIA.map((item, i) => (
+                <Reveal key={item.src} delay={(i % 4) * 0.06}>
+                  <figure className="group relative overflow-hidden">
+                    <img
+                      src={item.src}
+                      alt={item.tecnica}
+                      loading="lazy"
+                      className="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-[11px] font-bold uppercase tracking-[0.14em] text-white">
+                      {item.tecnica}
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-background py-24 text-center">
           <Reveal className="mx-auto max-w-3xl px-6">
             <div className="flex justify-center gap-1 text-primary">
               {Array.from({ length: 5 }).map((_, i) => (

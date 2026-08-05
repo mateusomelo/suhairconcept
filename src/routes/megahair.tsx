@@ -13,8 +13,14 @@ import {
 } from "lucide-react";
 
 import logoSu from "@/assets/logo-su-marca.png";
-import megaHero from "@/assets/mega-hero.jpg";
-import megaResult from "@/assets/mega-result.jpg";
+import mg1 from "@/assets/mg-1.jpg";
+import mg2 from "@/assets/mg-2.jpg";
+import mg3 from "@/assets/mg-3.jpg";
+import mg4 from "@/assets/mg-4.jpg";
+import mg5 from "@/assets/mg-5.jpg";
+import mg6 from "@/assets/mg-6.jpg";
+import megaHero from "@/assets/mega-topo.jpg";
+import megaResult from "@/assets/mega-resultado.jpg";
 import testimonialPoster from "@/assets/megahair-depoimento-poster.jpg";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { Reveal } from "@/components/site/Reveal";
@@ -50,6 +56,9 @@ const benefits = [
   "Mais de 10 anos de experiência",
   "Diagnóstico gratuito e personalizado",
 ];
+
+// Antes e depois reais de clientes — cada arquivo já traz os dois lados.
+const TRANSFORMACOES = [mg1, mg2, mg3, mg4, mg5, mg6];
 
 const missionValues = [
   {
@@ -263,7 +272,35 @@ function MegaHairLanding() {
           </Reveal>
         </section>
 
-        <section className="bg-offwhite py-24 lg:py-32">
+        <section id="transformacoes" className="bg-offwhite py-24 lg:py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <Reveal className="mx-auto max-w-2xl text-center">
+              <p className="text-xs uppercase tracking-[0.2em] text-gold">Antes e depois</p>
+              <h2 className="mt-4 font-display text-4xl font-light sm:text-5xl">
+                Transformações reais de clientes.
+              </h2>
+              <p className="mt-5 text-sm leading-7 text-muted-foreground">
+                Comprimento, volume e cor — resultados de quem sentou na nossa cadeira.
+              </p>
+            </Reveal>
+            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {TRANSFORMACOES.map((src, i) => (
+                <Reveal key={src} delay={(i % 3) * 0.06}>
+                  <figure className="overflow-hidden border border-border bg-background">
+                    <img
+                      src={src}
+                      alt="Antes e depois de mega hair"
+                      loading="lazy"
+                      className="w-full object-contain"
+                    />
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-background py-24 lg:py-32">
           <Reveal className="mx-auto max-w-7xl px-6 lg:px-10">
             <p className="text-xs uppercase tracking-[0.2em] text-gold">Nossa essência</p>
             <h2 className="mt-4 max-w-2xl font-display text-4xl font-light sm:text-5xl">
