@@ -1,0 +1,21 @@
+# Configuração de deploy no Netlify.
+#
+# O projeto usa TanStack Start com Nitro, que por padrão compila para
+# Cloudflare (é o alvo embutido no preset do Lovable). No Netlify isso
+# gera as pastas erradas e o deploy falha com "Deploy directory
+# 'dist/client' does not exist".
+#
+# NITRO_PRESET=netlify muda o alvo. Com ele o build produz:
+#   dist/                             -> arquivos estáticos publicados
+#   .netlify/functions-internal/      -> função que renderiza no servidor
+#
+# Estas configurações têm precedência sobre o que estiver na interface do
+# Netlify, então não é preciso mexer lá.
+
+[build]
+  command = "bun run build"
+  publish = "dist"
+
+[build.environment]
+  NITRO_PRESET = "netlify"
+  NODE_VERSION = "22"
