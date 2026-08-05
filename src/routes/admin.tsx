@@ -1,9 +1,9 @@
 import type { Session } from "@supabase/supabase-js";
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowLeft, Eye, Loader2, LogOut, Plus, Trash2 } from "lucide-react";
+import { ArrowLeft, Eye, ImagePlus, Loader2, LogOut, Plus, Trash2 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
-import { gerarSlug, supabase, type Post } from "@/lib/supabase";
+import { enviarImagem, gerarSlug, supabase, type Post } from "@/lib/supabase";
 
 export const Route = createFileRoute("/admin")({
   component: AdminPage,
@@ -114,6 +114,8 @@ const VAZIO = {
   resumo: "",
   conteudo: "",
   imagem_url: "",
+  meta_title: "",
+  meta_description: "",
   publicado: false,
 };
 
@@ -154,6 +156,8 @@ function Painel() {
       resumo: editando.resumo?.trim() || null,
       conteudo: editando.conteudo ?? "",
       imagem_url: editando.imagem_url?.trim() || null,
+      meta_title: editando.meta_title?.trim() || null,
+      meta_description: editando.meta_description?.trim() || null,
       publicado: editando.publicado ?? false,
     };
 
@@ -227,11 +231,29 @@ function Painel() {
               placeholder="Duas ou três linhas que resumem a matéria."
             />
 
-            <Campo
-              rotulo="Imagem de capa (link)"
+            <CampoImagem
               valor={editando.imagem_url ?? ""}
               onChange={(v) => setEditando((p) => ({ ...p, imagem_url: v }))}
-              ajuda="Cole o link de uma imagem já publicada na internet ou no Storage do Supabase."
+            />
+
+            <Campo
+              rotulo="Título no Google (opcional)"
+              valor={editando.meta_title ?? ""}
+              onChange={(v) => setEditando((p) => ({ ...p, meta_title: v }))}
+              limite={60}
+              placeholder="Mega hair no verão: 5 cuidados essenciais"
+              ajuda="É o texto azul clicável no resultado da busca. Sem preencher, o Google usa o título da matéria."
+            />
+
+            <Campo
+              rotulo="Descrição no Google (opcional)"
+              valor={editando.meta_description ?? ""}
+              onChange={(v) => setEditando((p) => ({ ...p, meta_description: v }))}
+              multilinha
+              linhas={3}
+              limite={155}
+              placeholder="Frase curta que convence a clicar no resultado da busca."
+              ajuda="Aparece embaixo do título no Google. Sem preencher, ele usa o resumo."
             />
 
             <Campo
@@ -346,6 +368,77 @@ function Painel() {
   );
 }
 
+function CampoImagem({ valor, onChange }: { valor: string; onChange: (v: string) => void }) {
+  const [enviando, setEnviando] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
+
+  async function escolher(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setEnviando(true);
+    setErro(null);
+    try {
+      onChange(await enviarImagem(file));
+    } catch {
+      setErro("Não conseguimos enviar a imagem. Tente novamente.");
+    }
+    setEnviando(false);
+    e.target.value = "";
+  }
+
+  return (
+    <div className="mt-6">
+      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+        Imagem de capa
+      </span>
+
+      {valor && (
+        <div className="mt-3 overflow-hidden rounded-lg border border-border">
+          <img src={valor} alt="Capa da matéria" className="aspect-[16/9] w-full object-cover" />
+        </div>
+      )}
+
+      <div className="mt-3 flex flex-wrap items-center gap-3">
+        <label className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-border bg-offwhite px-5 text-xs font-semibold uppercase tracking-[0.14em] hover:border-gold">
+          {enviando ? (
+            <>
+              <Loader2 className="size-4 animate-spin" /> Enviando
+            </>
+          ) : (
+            <>
+              <ImagePlus className="size-4" /> {valor ? "Trocar imagem" : "Escolher imagem"}
+            </>
+          )}
+          <input
+            type="file"
+            accept="image/*"
+            onChange={escolher}
+            disabled={enviando}
+            className="hidden"
+          />
+        </label>
+
+        {valor && (
+          <button
+            type="button"
+            onClick={() => onChange("")}
+            className="text-xs uppercase tracking-[0.14em] text-muted-foreground underline underline-offset-4 hover:text-red-600"
+          >
+            Remover
+          </button>
+        )}
+      </div>
+
+      {erro && <p className="mt-2 text-sm text-red-600">{erro}</p>}
+      <span className="mt-2 block text-xs text-muted-foreground">
+        Escolha uma foto do seu computador ou celular. Fotos de iPhone (.HEIC) precisam ser
+        convertidas para JPG antes, porque os navegadores não exibem esse formato.
+      </span>
+    </div>
+  );
+}
+
 function Campo({
   rotulo,
   valor,
@@ -354,6 +447,7 @@ function Campo({
   placeholder,
   multilinha = false,
   linhas = 3,
+  limite,
 }: {
   rotulo: string;
   valor: string;
@@ -362,14 +456,21 @@ function Campo({
   placeholder?: string;
   multilinha?: boolean;
   linhas?: number;
+  limite?: number;
 }) {
   const classe =
     "mt-3 w-full rounded-lg border border-border bg-offwhite p-3.5 text-sm outline-none focus:border-gold";
+  const excedeu = limite !== undefined && valor.length > limite;
 
   return (
     <label className="mt-6 block first:mt-0">
-      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+      <span className="flex items-center justify-between gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
         {rotulo}
+        {limite !== undefined && (
+          <span className={excedeu ? "text-red-600" : "text-muted-foreground"}>
+            {valor.length}/{limite}
+          </span>
+        )}
       </span>
       {multilinha ? (
         <textarea

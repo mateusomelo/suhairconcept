@@ -14,6 +14,8 @@ type PostPublico = {
   resumo: string | null;
   conteudo: string;
   imagem_url: string | null;
+  meta_title: string | null;
+  meta_description: string | null;
   criado_em: string;
   atualizado_em: string;
 };
@@ -22,7 +24,7 @@ export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }): Promise<PostPublico> => {
     const { data } = await supabase
       .from("posts")
-      .select("slug, titulo, resumo, conteudo, imagem_url, criado_em, atualizado_em")
+      .select("slug, titulo, resumo, conteudo, imagem_url, meta_title, meta_description, criado_em, atualizado_em")
       .eq("slug", params.slug)
       .eq("publicado", true)
       .maybeSingle();
@@ -34,13 +36,15 @@ export const Route = createFileRoute("/blog/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const url = `${BASE_URL}/blog/${loaderData.slug}`;
-    const descricao = loaderData.resumo ?? `${loaderData.conteudo.slice(0, 155)}…`;
+    const titulo = loaderData.meta_title || loaderData.titulo;
+    const descricao =
+      loaderData.meta_description || loaderData.resumo || `${loaderData.conteudo.slice(0, 155)}…`;
 
     return {
       meta: [
-        { title: `${loaderData.titulo} | SÜ Hair Concept` },
+        { title: `${titulo} | SÜ Hair Concept` },
         { name: "description", content: descricao },
-        { property: "og:title", content: loaderData.titulo },
+        { property: "og:title", content: titulo },
         { property: "og:description", content: descricao },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
