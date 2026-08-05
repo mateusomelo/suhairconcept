@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Star } from "lucide-react";
+import { ArrowLeft, ArrowRight, PenLine, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
@@ -89,15 +89,23 @@ export function Reviews() {
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="flex items-center gap-5 border border-border px-8 py-6">
-              <p className="font-display text-5xl leading-none">4,9</p>
-              <div>
-                <Stars />
-                <p className="mt-2 text-xs text-muted-foreground">
-                  Baseado em{" "}
-                  <strong className="font-semibold text-foreground">742 avaliações</strong>
-                </p>
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-5 border border-border px-8 py-6">
+                <p className="font-display text-5xl leading-none">4,9</p>
+                <div>
+                  <Stars />
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    Baseado em{" "}
+                    <strong className="font-semibold text-foreground">742 avaliações</strong>
+                  </p>
+                </div>
               </div>
+              <a
+                href="/avaliar"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-gold px-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-ink transition-transform hover:-translate-y-0.5"
+              >
+                <PenLine className="size-4" /> Deixe sua avaliação
+              </a>
             </div>
           </Reveal>
         </div>
