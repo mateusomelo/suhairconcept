@@ -436,23 +436,6 @@ function CampoImagem({ valor, onChange }: { valor: string; onChange: (v: string)
         exibem esse formato.
       </span>
 
-      {/* Alternativa ao envio: imagem que já está publicada em outro
-          site, no Instagram ou em qualquer link direto. */}
-      <div className="mt-5 border-t border-border pt-5">
-        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-          Ou cole o link de uma imagem
-        </span>
-        <input
-          value={valor}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder="https://..."
-          className="mt-3 w-full rounded-lg border border-border bg-offwhite p-3.5 text-sm outline-none focus:border-gold"
-        />
-        <span className="mt-2 block text-xs text-muted-foreground">
-          Precisa ser o endereço direto da imagem, terminando em .jpg, .png ou .webp — não o
-          endereço da página onde ela aparece.
-        </span>
-      </div>
     </div>
   );
 }

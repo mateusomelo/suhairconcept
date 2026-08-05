@@ -77,6 +77,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      // Reforça o translate="no" do <html> para navegadores que já
+      // guardaram a preferência de traduzir este site.
+      { name: "google", content: "notranslate" },
       { title: "SÜ Hair Concept | Beauty Experience" },
       {
         name: "description",
@@ -136,7 +139,10 @@ function RootShell({ children }: { children: ReactNode }) {
     // O site é em português. Declarar "en" fazia o Chrome traduzir a
     // página sozinho, e a tradução automática troca os nós de texto por
     // baixo do React — o que derrubava telas interativas como o /admin.
-    <html lang="pt-BR">
+    // translate="no" é obrigatório aqui: a tradução automática do Chrome
+    // substitui os nós de texto por baixo do React, que depois falha com
+    // "removeChild: node is not a child of this node" e derruba a tela.
+    <html lang="pt-BR" translate="no">
       <head>
         <HeadContent />
       </head>
