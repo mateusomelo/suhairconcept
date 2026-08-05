@@ -435,7 +435,6 @@ function CampoImagem({ valor, onChange }: { valor: string; onChange: (v: string)
         Fotos de iPhone (.HEIC) precisam ser convertidas para JPG antes, porque os navegadores não
         exibem esse formato.
       </span>
-
     </div>
   );
 }
