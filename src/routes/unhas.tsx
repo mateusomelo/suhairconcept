@@ -12,8 +12,8 @@ import {
   Star,
 } from "lucide-react";
 
-import nailsDetail from "@/assets/nails-detail.jpg";
-import nailsHero from "@/assets/nails-hero.jpg";
+import nailsDetail from "@/assets/unhas-detalhe.jpg";
+import nailsHero from "@/assets/unhas-hero.jpg";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { Reveal } from "@/components/site/Reveal";
 import { SITE } from "@/lib/site-data";

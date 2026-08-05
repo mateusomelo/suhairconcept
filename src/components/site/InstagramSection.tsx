@@ -1,15 +1,15 @@
 import { Instagram } from "lucide-react";
 
-import about from "@/assets/about-salon.jpg";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
-import g5 from "@/assets/gallery-5.jpg";
+import i6 from "@/assets/insta-6.jpg";
+import i1 from "@/assets/insta-1.jpg";
+import i2 from "@/assets/insta-2.jpg";
+import i3 from "@/assets/insta-3.jpg";
+import i4 from "@/assets/insta-4.jpg";
+import i5 from "@/assets/insta-5.jpg";
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
 import { SITE } from "@/lib/site-data";
 
-const FEED = [g1, g5, g4, about, g2, g3];
+const FEED = [i1, i2, i3, i4, i5, i6];
 
 export function InstagramSection() {
   return (

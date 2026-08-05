@@ -3,12 +3,12 @@ import { X } from "lucide-react";
 import { useState } from "react";
 
 import about from "@/assets/about-salon.jpg";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
-import g5 from "@/assets/gallery-5.jpg";
-import g6 from "@/assets/gallery-6.jpg";
+import g1 from "@/assets/gal-1.jpg";
+import g2 from "@/assets/gal-2.jpg";
+import g3 from "@/assets/gal-3.jpg";
+import g4 from "@/assets/gal-4.jpg";
+import g5 from "@/assets/gal-5.jpg";
+import g6 from "@/assets/gal-6.jpg";
 import hero from "@/assets/hero-salon.jpg";
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
 

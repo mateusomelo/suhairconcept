@@ -2,17 +2,30 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
+import ba1 from "@/assets/ba-1.jpg";
+import ba2 from "@/assets/ba-2.jpg";
+import ba3 from "@/assets/ba-3.jpg";
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
 import { SITE } from "@/lib/site-data";
 
+// Fotos reais de clientes do salão — cada arquivo já traz o antes e o
+// depois lado a lado, com as etiquetas aplicadas na própria imagem.
 const SLIDES = [
-  { before: g3, after: g1, title: "Morena Iluminada", text: "Transição suave e brilho natural." },
-  { before: g2, after: g4, title: "Mega Hair", text: "Volume e comprimento com naturalidade." },
-  { before: g1, after: g2, title: "Loiro Premium", text: "Clareamento seguro e fio saudável." },
+  {
+    img: ba1,
+    title: "Mega Hair + Loiro",
+    text: "Do corte curto ao comprimento longo com iluminação natural.",
+  },
+  {
+    img: ba2,
+    title: "Loiro Premium",
+    text: "Clareamento seguro, fio saudável e caimento leve.",
+  },
+  {
+    img: ba3,
+    title: "Mega Hair",
+    text: "Volume e comprimento com naturalidade total.",
+  },
 ];
 
 export function BeforeAfter() {
@@ -56,21 +69,16 @@ export function BeforeAfter() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.5 }}
-            className="mt-12 grid gap-4 sm:grid-cols-2"
+            className="mt-12"
           >
-            {(["Antes", "Depois"] as const).map((label, i) => (
-              <figure key={label} className="relative overflow-hidden">
-                <img
-                  src={i === 0 ? slide.before : slide.after}
-                  alt={`${label} — ${slide.title}`}
-                  loading="lazy"
-                  className="aspect-[4/5] w-full object-cover sm:aspect-[4/3]"
-                />
-                <figcaption className="absolute left-4 top-4 bg-background/90 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.25em]">
-                  {label}
-                </figcaption>
-              </figure>
-            ))}
+            <figure className="mx-auto max-w-3xl overflow-hidden border border-border bg-offwhite">
+              <img
+                src={slide.img}
+                alt={`Antes e depois — ${slide.title}`}
+                loading="lazy"
+                className="mx-auto max-h-[62svh] w-full object-contain"
+              />
+            </figure>
           </motion.div>
         </AnimatePresence>
 

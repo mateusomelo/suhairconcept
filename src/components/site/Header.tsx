@@ -22,7 +22,9 @@ export function Header() {
     <header
       className={cn(
         "fixed inset-x-0 top-[38px] z-50 transition-all duration-500 sm:top-[46px]",
-        scrolled ? "glass border-b border-border/60 shadow-[0_8px_30px_-18px_rgba(0,0,0,0.5)]" : "bg-transparent",
+        scrolled
+          ? "glass border-b border-border/60 shadow-[0_8px_30px_-18px_rgba(0,0,0,0.5)]"
+          : "bg-transparent",
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-10">
@@ -44,7 +46,9 @@ export function Header() {
               {...(link.href.startsWith("#") ? { hash: link.href.slice(1) } : {})}
               className={cn(
                 "relative text-[13px] tracking-wide transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100",
-                scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/80 hover:text-white",
+                scrolled
+                  ? "text-muted-foreground hover:text-foreground"
+                  : "text-white/80 hover:text-white",
               )}
             >
               {link.label}
