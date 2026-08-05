@@ -10,7 +10,10 @@ export function Hero() {
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
   return (
-    <section id="inicio" className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-black">
+    <section
+      id="inicio"
+      className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-black"
+    >
       {/* Vídeo da fachada em loop, mudo e sem controles — é cenário, não
           conteúdo. O poster cobre o intervalo até o vídeo carregar e serve
           de fallback onde o autoplay é bloqueado (iOS em economia de
@@ -47,7 +50,8 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="font-display text-4xl font-light leading-[1.1] text-white sm:text-6xl lg:text-7xl"
         >
-          Elevando o padrão da<br className="hidden sm:block" /> beleza com{" "}
+          Elevando o padrão da
+          <br className="hidden sm:block" /> beleza com{" "}
           <span className="italic text-gold">intenção.</span>
         </motion.h1>
 
@@ -57,7 +61,8 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.55 }}
           className="mt-7 max-w-2xl text-sm font-light leading-relaxed text-white/75 sm:text-base"
         >
-          Exclusividade, precisão e atendimento personalizado para transformar sua experiência em beleza.
+          Exclusividade, precisão e atendimento personalizado para transformar sua experiência em
+          beleza.
         </motion.p>
 
         <motion.div
@@ -93,7 +98,9 @@ export function Hero() {
         style={{ opacity }}
         className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-center"
       >
-        <span className="mb-3 block text-[9px] uppercase tracking-[0.4em] text-white/50">Explore</span>
+        <span className="mb-3 block text-[9px] uppercase tracking-[0.4em] text-white/50">
+          Explore
+        </span>
         <motion.span
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
