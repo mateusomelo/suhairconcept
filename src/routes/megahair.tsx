@@ -24,7 +24,7 @@ import megaResult from "@/assets/mega-resultado.jpg";
 import testimonialPoster from "@/assets/megahair-depoimento-poster.jpg";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { Reveal } from "@/components/site/Reveal";
-import { SITE } from "@/lib/site-data";
+import { BASE_URL, SITE } from "@/lib/site-data";
 
 const TITLE = "Mega Hair Premium em São Paulo | SÜ Hair Concept";
 const DESCRIPTION =
@@ -84,10 +84,10 @@ export const Route = createFileRoute("/megahair")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://suhairconcept.lovable.app/megahair" },
+      { property: "og:url", content: `${BASE_URL}/megahair` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://suhairconcept.lovable.app/megahair" }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/megahair` }],
   }),
 });
 

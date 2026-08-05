@@ -3,10 +3,10 @@ import { ArrowLeft, MessageCircle } from "lucide-react";
 import Markdown from "react-markdown";
 
 import { BlogShell, formatarData } from "@/components/site/BlogShell";
-import { SITE } from "@/lib/site-data";
+import { BASE_URL, SITE } from "@/lib/site-data";
 import { supabase } from "@/lib/supabase";
 
-const BASE_URL = "https://suhairconcept.lovable.app";
+
 
 type PostPublico = {
   slug: string;

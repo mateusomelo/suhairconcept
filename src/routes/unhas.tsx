@@ -28,7 +28,7 @@ import nailsDetail from "@/assets/unhas-detalhe.jpg";
 import nailsHero from "@/assets/unhas-hero.jpg";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { Reveal } from "@/components/site/Reveal";
-import { SITE } from "@/lib/site-data";
+import { BASE_URL, SITE } from "@/lib/site-data";
 
 const TITLE = "Alongamento de Unhas | Studio Über — SÜ Hair Concept";
 const DESCRIPTION =
@@ -71,10 +71,10 @@ export const Route = createFileRoute("/unhas")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://suhairconcept.lovable.app/unhas" },
+      { property: "og:url", content: `${BASE_URL}/unhas` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://suhairconcept.lovable.app/unhas" }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/unhas` }],
   }),
 });
 

@@ -1,3 +1,10 @@
+/**
+ * Endereço público do site. Usado nas tags canonical, og:url e no
+ * sitemap — o Google trata esse valor como o endereço oficial de cada
+ * página. Ao migrar para domínio próprio, troque só esta linha.
+ */
+export const BASE_URL = "https://suhairconcept.netlify.app";
+
 export const SITE = {
   name: "SÜ Hair Concept",
   tagline: "Beauty Experience",
