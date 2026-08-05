@@ -12,3 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap com todas as páginas e matérias do blog
+Sitemap: https://suhairconcept.netlify.app/sitemap.xml
