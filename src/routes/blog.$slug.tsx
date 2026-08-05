@@ -6,8 +6,6 @@ import { BlogShell, formatarData } from "@/components/site/BlogShell";
 import { BASE_URL, SITE } from "@/lib/site-data";
 import { supabase } from "@/lib/supabase";
 
-
-
 type PostPublico = {
   slug: string;
   titulo: string;
@@ -24,7 +22,9 @@ export const Route = createFileRoute("/blog/$slug")({
   loader: async ({ params }): Promise<PostPublico> => {
     const { data } = await supabase
       .from("posts")
-      .select("slug, titulo, resumo, conteudo, imagem_url, meta_title, meta_description, criado_em, atualizado_em")
+      .select(
+        "slug, titulo, resumo, conteudo, imagem_url, meta_title, meta_description, criado_em, atualizado_em",
+      )
       .eq("slug", params.slug)
       .eq("publicado", true)
       .maybeSingle();

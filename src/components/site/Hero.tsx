@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { MapPin, Sparkles } from "lucide-react";
 
-import heroImage from "@/assets/hero-fachada.jpg";
+import heroPoster from "@/assets/hero-video-poster.jpg";
 import { SITE } from "@/lib/site-data";
 
 export function Hero() {
@@ -11,12 +11,20 @@ export function Hero() {
 
   return (
     <section id="inicio" className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-black">
-      <motion.img
+      {/* Vídeo da fachada em loop, mudo e sem controles — é cenário, não
+          conteúdo. O poster cobre o intervalo até o vídeo carregar e serve
+          de fallback onde o autoplay é bloqueado (iOS em economia de
+          bateria, por exemplo). */}
+      <motion.video
         style={{ y }}
-        src={heroImage}
-        alt="Interior sofisticado do salão SÜ Hair Concept"
-        width={1920}
-        height={1280}
+        src="/videos/fachada.mp4"
+        poster={heroPoster}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
         className="absolute inset-0 size-full scale-110 object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/45 to-black/85" />
