@@ -5,13 +5,9 @@ export const SITE = {
   phoneHref: "tel:+551150421518",
   whatsapp: "https://wa.me/5511914981956?text=Ola%20gostaria%20de%20agendar%20um%20hor%C3%A1rio",
   instagram: "https://www.instagram.com/suhairconcept/",
-  // TROQUE pelo link curto de avaliação do seu Perfil da Empresa no Google
-  // (Perfil da Empresa > Pedir avaliações). Fica no formato
-  // https://g.page/r/XXXXXXXX/review e abre a caixa de avaliação direto.
-  // Enquanto não trocar, cai na ficha do salão no Maps, onde a cliente
-  // precisa clicar em "Escrever avaliação".
-  googleReview:
-    "https://www.google.com/maps/search/?api=1&query=S%C3%9C+Hair+Concept+Av.+Pav%C3%A3o,+362+Indian%C3%B3polis+S%C3%A3o+Paulo",
+  // Link curto do Perfil da Empresa no Google: abre a caixa de avaliação
+  // direto, sem a cliente precisar procurar o botão na ficha do Maps.
+  googleReview: "https://g.page/r/CWAhutpsG6bREB0/review",
   address: {
     street: "Av. Pavão, 362",
     district: "Indianópolis",
