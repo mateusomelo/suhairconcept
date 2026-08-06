@@ -242,8 +242,9 @@ function Painel() {
                 setEditando((p) => ({
                   ...p,
                   titulo: v,
-                  // Só sugere o slug enquanto a matéria é nova.
-                  slug: p?.id ? p.slug : gerarSlug(v),
+                  // Só sugere o slug enquanto a matéria é nova; ao editar
+                  // uma já salva, mantém o endereço que o Google indexou.
+                  slug: p?.id ? (p.slug ?? "") : gerarSlug(v),
                 }))
               }
               placeholder="Como cuidar do mega hair no verão"

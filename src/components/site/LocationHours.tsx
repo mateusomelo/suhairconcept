@@ -1,7 +1,7 @@
 import { CalendarCheck, Clock, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
 
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
-import { HOURS, SITE } from "@/lib/site-data";
+import { HOURS, SITE, WHATSAPP } from "@/lib/site-data";
 
 export function LocationHours() {
   return (
