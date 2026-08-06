@@ -69,7 +69,7 @@ const GALERIA = [
   { src: unMani4, tecnica: "Manicure" },
 ];
 
-export const Route = createFileRoute("/alongamento-de-unha-moema")({
+export const Route = createFileRoute("/alongamento-de-unhas-moema")({
   component: NailsLanding,
   head: () => ({
     meta: [
@@ -78,10 +78,10 @@ export const Route = createFileRoute("/alongamento-de-unha-moema")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: `${BASE_URL}/alongamento-de-unha-moema` },
+      { property: "og:url", content: `${BASE_URL}/alongamento-de-unhas-moema` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: `${BASE_URL}/alongamento-de-unha-moema` }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/alongamento-de-unhas-moema` }],
   }),
 });
 

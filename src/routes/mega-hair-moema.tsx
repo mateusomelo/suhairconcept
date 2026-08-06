@@ -57,7 +57,7 @@ const missionValues = [
   },
 ];
 
-export const Route = createFileRoute("/mega-hair-aplicacao-rapida-moema")({
+export const Route = createFileRoute("/mega-hair-moema")({
   component: MegaHairLanding,
   head: () => ({
     meta: [
@@ -66,10 +66,10 @@ export const Route = createFileRoute("/mega-hair-aplicacao-rapida-moema")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: `${BASE_URL}/mega-hair-aplicacao-rapida-moema` },
+      { property: "og:url", content: `${BASE_URL}/mega-hair-moema` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: `${BASE_URL}/mega-hair-aplicacao-rapida-moema` }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/mega-hair-moema` }],
   }),
 });
 

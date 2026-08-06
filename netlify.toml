@@ -26,12 +26,12 @@
 # continua chegando na página certa.
 [[redirects]]
   from = "/megahair"
-  to = "/mega-hair-aplicacao-rapida-moema"
+  to = "/mega-hair-moema"
   status = 301
   force = true
 
 [[redirects]]
   from = "/unhas"
-  to = "/alongamento-de-unha-moema"
+  to = "/alongamento-de-unhas-moema"
   status = 301
   force = true
