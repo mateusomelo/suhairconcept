@@ -24,30 +24,12 @@ import megaResult from "@/assets/mega-resultado.jpg";
 import testimonialPoster from "@/assets/megahair-depoimento-poster.jpg";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { Reveal } from "@/components/site/Reveal";
-import { BASE_URL, SITE, WHATSAPP } from "@/lib/site-data";
+import { BASE_URL, MEGA_HAIR_SERVICOS, SITE, WHATSAPP } from "@/lib/site-data";
 
 const TITLE = "Mega Hair Premium em São Paulo | SÜ Hair Concept";
 const DESCRIPTION =
   "Mega Hair premium com fios 100% humanos, aplicação segura e resultado natural no SÜ Hair Concept, em Moema.";
 
-const techniques = [
-  [
-    "Fita adesiva",
-    "Aplicação leve, plana e confortável para conquistar volume e comprimento com rapidez.",
-  ],
-  [
-    "Ponto americano",
-    "Técnica resistente, discreta e com movimento natural para uma transformação marcante.",
-  ],
-  [
-    "Mega hair invisível",
-    "Acabamento imperceptível, especialmente indicado para cabelos finos e delicados.",
-  ],
-  [
-    "Queratina",
-    "Aplicação fio a fio com caimento leve, liberdade de movimento e naturalidade máxima.",
-  ],
-];
 
 const benefits = [
   "Fios 100% humanos e selecionados",
@@ -75,7 +57,7 @@ const missionValues = [
   },
 ];
 
-export const Route = createFileRoute("/megahair")({
+export const Route = createFileRoute("/mega-hair-aplicacao-rapida-moema")({
   component: MegaHairLanding,
   head: () => ({
     meta: [
@@ -84,10 +66,10 @@ export const Route = createFileRoute("/megahair")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: `${BASE_URL}/megahair` },
+      { property: "og:url", content: `${BASE_URL}/mega-hair-aplicacao-rapida-moema` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: `${BASE_URL}/megahair` }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/mega-hair-aplicacao-rapida-moema` }],
   }),
 });
 
@@ -239,12 +221,26 @@ function MegaHairLanding() {
               </p>
             </Reveal>
             <div className="mt-14 grid border-l border-t border-border sm:grid-cols-2 lg:grid-cols-4">
-              {techniques.map(([title, text], index) => (
-                <Reveal key={title} delay={(index % 4) * 0.06}>
-                  <article className="min-h-64 border-b border-r border-border p-7 transition-colors hover:bg-offwhite">
-                    <span className="font-display text-3xl text-gold/70">0{index + 1}</span>
-                    <h3 className="mt-7 font-display text-2xl">{title}</h3>
-                    <p className="mt-4 text-xs leading-6 text-muted-foreground">{text}</p>
+              {MEGA_HAIR_SERVICOS.map((s, index) => (
+                <Reveal key={s.nome} delay={(index % 4) * 0.06}>
+                  <article className="flex min-h-64 flex-col border-b border-r border-border p-7 transition-colors hover:bg-offwhite">
+                    <span className="font-display text-3xl text-gold/70">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    {/* Nome de busca em destaque, assinatura SÜ abaixo —
+                        o nome exclusivo nunca aparece sozinho. */}
+                    <h3 className="mt-7 font-display text-xl leading-snug">{s.nome}</h3>
+                    <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-gold">
+                      {s.su}
+                    </p>
+                    <a
+                      href={s.cta}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-auto pt-6 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground underline underline-offset-4 hover:text-gold"
+                    >
+                      Quero avaliação
+                    </a>
                   </article>
                 </Reveal>
               ))}

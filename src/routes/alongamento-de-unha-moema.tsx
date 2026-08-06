@@ -29,7 +29,7 @@ import nailsDetail from "@/assets/unhas-detalhe.jpg";
 import nailsHero from "@/assets/unhas-hero.jpg";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { Reveal } from "@/components/site/Reveal";
-import { BASE_URL, SITE, WHATSAPP } from "@/lib/site-data";
+import { BASE_URL, SITE, UNHAS_SERVICOS, WHATSAPP } from "@/lib/site-data";
 
 const TITLE = "Alongamento de Unhas em Moema | SÜ Hair Concept";
 const DESCRIPTION =
@@ -40,23 +40,6 @@ const DESCRIPTION =
  * SÜ entram depois, quando a planilha de correspondência chegar — não
  * são inventados aqui.
  */
-const services = [
-  {
-    nome: "Alongamento em fibra de vidro",
-    texto: "Leve, resistente e moldado para harmonizar perfeitamente com as suas mãos.",
-    icone: Gem,
-  },
-  {
-    nome: "Blindagem e banho de gel",
-    texto: "Proteção e estrutura para suas unhas naturais crescerem fortes e impecáveis.",
-    icone: ShieldCheck,
-  },
-  {
-    nome: "Manicure e manutenção",
-    texto: "Cuidado técnico com as cutículas e acabamento impecável em cada detalhe.",
-    icone: Heart,
-  },
-];
 
 // Diferenciais listados nas diretrizes de otimização.
 const DIFERENCIAIS = [
@@ -86,7 +69,7 @@ const GALERIA = [
   { src: unMani4, tecnica: "Manicure" },
 ];
 
-export const Route = createFileRoute("/unhas")({
+export const Route = createFileRoute("/alongamento-de-unha-moema")({
   component: NailsLanding,
   head: () => ({
     meta: [
@@ -95,10 +78,10 @@ export const Route = createFileRoute("/unhas")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: `${BASE_URL}/unhas` },
+      { property: "og:url", content: `${BASE_URL}/alongamento-de-unha-moema` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: `${BASE_URL}/unhas` }],
+    links: [{ rel: "canonical", href: `${BASE_URL}/alongamento-de-unha-moema` }],
   }),
 });
 
@@ -200,22 +183,22 @@ function NailsLanding() {
                 O cuidado certo para cada fase das suas unhas.
               </h2>
             </Reveal>
-            <div className="mt-14 grid gap-5 md:grid-cols-3">
-              {services.map((s, i) => (
+            <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {UNHAS_SERVICOS.map((s, i) => (
                 <Reveal key={s.nome} delay={(i % 3) * 0.06}>
-                  <article className="h-full border border-border bg-offwhite p-8">
-                    <span className="flex size-11 items-center justify-center rounded-full bg-background text-gold">
-                      <s.icone className="size-5" />
-                    </span>
-                    <h3 className="mt-7 font-display text-2xl leading-snug">{s.nome}</h3>
-                    <p className="mt-4 text-sm leading-7 text-muted-foreground">{s.texto}</p>
+                  <article className="flex h-full flex-col border border-border bg-offwhite p-7">
+                    {/* Nome de busca em destaque, assinatura SÜ abaixo. */}
+                    <h3 className="font-display text-xl leading-snug">{s.nome}</h3>
+                    <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-gold">
+                      {s.su}
+                    </p>
                     <a
-                      href={WHATSAPP.unhas}
+                      href={s.cta}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-7 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-gold"
+                      className="mt-auto inline-flex items-center gap-2 pt-6 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground underline underline-offset-4 hover:text-gold"
                     >
-                      Agendar <ArrowRight className="size-4" />
+                      Quero este serviço <ArrowRight className="size-3.5" />
                     </a>
                   </article>
                 </Reveal>
@@ -223,7 +206,7 @@ function NailsLanding() {
             </div>
             <Reveal delay={0.2}>
               <p className="mt-10 text-center text-sm text-muted-foreground">
-                Também realizamos acrílico, nail art e manutenção.
+                Também realizamos nail art e esmaltação em francesinha.
               </p>
             </Reveal>
           </div>

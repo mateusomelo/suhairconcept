@@ -19,3 +19,19 @@
 [build.environment]
   NITRO_PRESET = "netlify"
   NODE_VERSION = "22"
+
+# URLs novas conforme a arquitetura de SEO da SÜ. Os endereços antigos
+# já estavam indexados e compartilhados, então redirecionam com 301
+# permanente — o Google transfere o histórico e quem tem o link antigo
+# continua chegando na página certa.
+[[redirects]]
+  from = "/megahair"
+  to = "/mega-hair-aplicacao-rapida-moema"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/unhas"
+  to = "/alongamento-de-unha-moema"
+  status = 301
+  force = true

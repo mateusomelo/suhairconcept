@@ -53,6 +53,44 @@ export const WHATSAPP = {
   ),
 };
 
+/**
+ * Serviços de mega hair conforme a arquitetura de SEO da SÜ.
+ *
+ * `nome` é como a cliente procura e aparece em destaque; `su` é o nome
+ * exclusivo e entra abaixo, como assinatura — nunca sozinho. Cada um tem
+ * o CTA definido na planilha, para que a conversa no WhatsApp já chegue
+ * dizendo qual técnica interessou.
+ */
+export const MEGA_HAIR_SERVICOS = [
+  { nome: "Mega Hair Invisível", su: "SÜ Invisible Extension" },
+  { nome: "Mega Hair Fita Adesiva", su: "SÜ Fusion Extension" },
+  { nome: "Mega Hair Ponto Americano", su: "SÜ Extension Essential Ponto Americano" },
+  { nome: "Mega Hair Nanopele", su: "SÜ Extension Precision Nano Skin" },
+  { nome: "Mega Hair Nó Italiano", su: "SÜ Extension Precision Nó Italiano" },
+  { nome: "Mega Hair Queratina", su: "SÜ Extension Signature Queratina" },
+  { nome: "Mega Hair Tic-Tac", su: "SÜ Extension Clip Experience" },
+  { nome: "Mega Hair Remoção", su: "SÜ Extension Removal" },
+].map((s) => ({
+  ...s,
+  cta: whatsappUrl(`Olá! Quero avaliação de ${s.nome} na SÜ Hair Concept.`),
+}));
+
+/** Serviços de unhas, mesma lógica de nomes e CTA por serviço. */
+export const UNHAS_SERVICOS = [
+  { nome: "Alongamento de Unha de Acrílico", su: "SÜ Signature Acrylix" },
+  { nome: "Alongamento de Unha de Fibra de Vidro", su: "SÜ Signature Fiber" },
+  { nome: "Alongamento de Unha de Gel", su: "SÜ Signature Gel" },
+  { nome: "Manutenção de Unha de Acrílico", su: "SÜ Signature Acrylic Renewal" },
+  { nome: "Manutenção de Unha de Fibra de Vidro", su: "SÜ Signature Fiber Renewal" },
+  { nome: "Manutenção de Unha de Gel", su: "SÜ Signature Gel Renewal" },
+  { nome: "Blindagem de Unhas Acrílico", su: "SÜ Structura Acrylic" },
+  { nome: "Blindagem de Unhas Gel", su: "SÜ Structura Gel" },
+  { nome: "Banho de Brilho", su: "SÜ Structura Gloss" },
+].map((s) => ({
+  ...s,
+  cta: whatsappUrl(`Olá! Quero ${s.nome} na SÜ Hair Concept.`),
+}));
+
 export const NAV_LINKS = [
   { label: "Início", href: "#inicio" },
   { label: "Sobre", href: "#sobre" },

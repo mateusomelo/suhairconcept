@@ -11,10 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AlongamentoDeUnhaMoemaRouteImport } from './routes/alongamento-de-unha-moema'
 import { Route as AvaliarRouteImport } from './routes/avaliar'
-import { Route as MegahairRouteImport } from './routes/megahair'
+import { Route as MegaHairAplicacaoRapidaMoemaRouteImport } from './routes/mega-hair-aplicacao-rapida-moema'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as UnhasRouteImport } from './routes/unhas'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
@@ -28,24 +28,25 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlongamentoDeUnhaMoemaRoute = AlongamentoDeUnhaMoemaRouteImport.update({
+  id: '/alongamento-de-unha-moema',
+  path: '/alongamento-de-unha-moema',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AvaliarRoute = AvaliarRouteImport.update({
   id: '/avaliar',
   path: '/avaliar',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MegahairRoute = MegahairRouteImport.update({
-  id: '/megahair',
-  path: '/megahair',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const MegaHairAplicacaoRapidaMoemaRoute =
+  MegaHairAplicacaoRapidaMoemaRouteImport.update({
+    id: '/mega-hair-aplicacao-rapida-moema',
+    path: '/mega-hair-aplicacao-rapida-moema',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UnhasRoute = UnhasRouteImport.update({
-  id: '/unhas',
-  path: '/unhas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -62,20 +63,20 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/alongamento-de-unha-moema': typeof AlongamentoDeUnhaMoemaRoute
   '/avaliar': typeof AvaliarRoute
-  '/megahair': typeof MegahairRoute
+  '/mega-hair-aplicacao-rapida-moema': typeof MegaHairAplicacaoRapidaMoemaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/unhas': typeof UnhasRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/alongamento-de-unha-moema': typeof AlongamentoDeUnhaMoemaRoute
   '/avaliar': typeof AvaliarRoute
-  '/megahair': typeof MegahairRoute
+  '/mega-hair-aplicacao-rapida-moema': typeof MegaHairAplicacaoRapidaMoemaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/unhas': typeof UnhasRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -83,10 +84,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/alongamento-de-unha-moema': typeof AlongamentoDeUnhaMoemaRoute
   '/avaliar': typeof AvaliarRoute
-  '/megahair': typeof MegahairRoute
+  '/mega-hair-aplicacao-rapida-moema': typeof MegaHairAplicacaoRapidaMoemaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/unhas': typeof UnhasRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -95,30 +96,30 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/alongamento-de-unha-moema'
     | '/avaliar'
-    | '/megahair'
+    | '/mega-hair-aplicacao-rapida-moema'
     | '/sitemap.xml'
-    | '/unhas'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/admin'
+    | '/alongamento-de-unha-moema'
     | '/avaliar'
-    | '/megahair'
+    | '/mega-hair-aplicacao-rapida-moema'
     | '/sitemap.xml'
-    | '/unhas'
     | '/blog/$slug'
     | '/blog'
   id:
     | '__root__'
     | '/'
     | '/admin'
+    | '/alongamento-de-unha-moema'
     | '/avaliar'
-    | '/megahair'
+    | '/mega-hair-aplicacao-rapida-moema'
     | '/sitemap.xml'
-    | '/unhas'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesById: FileRoutesById
@@ -126,10 +127,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  AlongamentoDeUnhaMoemaRoute: typeof AlongamentoDeUnhaMoemaRoute
   AvaliarRoute: typeof AvaliarRoute
-  MegahairRoute: typeof MegahairRoute
+  MegaHairAplicacaoRapidaMoemaRoute: typeof MegaHairAplicacaoRapidaMoemaRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  UnhasRoute: typeof UnhasRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
@@ -150,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alongamento-de-unha-moema': {
+      id: '/alongamento-de-unha-moema'
+      path: '/alongamento-de-unha-moema'
+      fullPath: '/alongamento-de-unha-moema'
+      preLoaderRoute: typeof AlongamentoDeUnhaMoemaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/avaliar': {
       id: '/avaliar'
       path: '/avaliar'
@@ -157,11 +165,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AvaliarRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/megahair': {
-      id: '/megahair'
-      path: '/megahair'
-      fullPath: '/megahair'
-      preLoaderRoute: typeof MegahairRouteImport
+    '/mega-hair-aplicacao-rapida-moema': {
+      id: '/mega-hair-aplicacao-rapida-moema'
+      path: '/mega-hair-aplicacao-rapida-moema'
+      fullPath: '/mega-hair-aplicacao-rapida-moema'
+      preLoaderRoute: typeof MegaHairAplicacaoRapidaMoemaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -169,13 +177,6 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/unhas': {
-      id: '/unhas'
-      path: '/unhas'
-      fullPath: '/unhas'
-      preLoaderRoute: typeof UnhasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -198,10 +199,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  AlongamentoDeUnhaMoemaRoute: AlongamentoDeUnhaMoemaRoute,
   AvaliarRoute: AvaliarRoute,
-  MegahairRoute: MegahairRoute,
+  MegaHairAplicacaoRapidaMoemaRoute: MegaHairAplicacaoRapidaMoemaRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  UnhasRoute: UnhasRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
 }

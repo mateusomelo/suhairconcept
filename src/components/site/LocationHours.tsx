@@ -33,7 +33,9 @@ export function LocationHours() {
                 <MapPin className="size-5 text-gold" strokeWidth={1.3} />
                 <address className="mt-5 not-italic leading-relaxed">
                   <span className="font-display text-xl">{SITE.address.street}</span>
-                  <span className="mt-1 block text-sm text-muted-foreground">{SITE.address.district}</span>
+                  <span className="mt-1 block text-sm text-muted-foreground">
+                    {SITE.address.district}
+                  </span>
                   <span className="block text-sm text-muted-foreground">{SITE.address.city}</span>
                   <span className="mt-3 block text-xs uppercase tracking-[0.2em] text-muted-foreground">
                     CEP {SITE.address.zip}
@@ -70,7 +72,9 @@ export function LocationHours() {
           {HOURS.map((h) => (
             <div key={h.day} className="bg-background p-6 transition-colors hover:bg-offwhite">
               <Clock className="size-4 text-gold" strokeWidth={1.3} />
-              <p className="mt-4 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">{h.day}</p>
+              <p className="mt-4 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                {h.day}
+              </p>
               <p className="mt-1 font-display text-lg">{h.time}</p>
             </div>
           ))}
@@ -91,7 +95,9 @@ export function LocationHours() {
                 rel="noreferrer"
                 className="group flex items-center justify-between border border-border px-6 py-5 transition-colors hover:border-gold hover:bg-offwhite"
               >
-                <span className="text-[11px] font-semibold uppercase tracking-[0.2em]">{c.label}</span>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.2em]">
+                  {c.label}
+                </span>
                 <c.icon className="size-4 text-gold transition-transform group-hover:translate-x-1" />
               </a>
             </Reveal>
