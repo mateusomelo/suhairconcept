@@ -6,6 +6,7 @@ import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { CtaSection } from "@/components/site/CtaSection";
 import { Differentials } from "@/components/site/Differentials";
 import { Faq, FAQ_GRUPOS } from "@/components/site/Faq";
+import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { Footer } from "@/components/site/Footer";
 import { Gallery } from "@/components/site/Gallery";
 import { Header } from "@/components/site/Header";
@@ -16,6 +17,7 @@ import { Philosophy } from "@/components/site/Philosophy";
 import { Reviews } from "@/components/site/Reviews";
 import { Services } from "@/components/site/Services";
 import { LocationHours } from "@/components/site/LocationHours";
+import { WHATSAPP } from "@/lib/site-data";
 
 const TITLE = "SÜ Hair Concept | Beauty Experience";
 const DESCRIPTION =
@@ -129,6 +131,7 @@ function Index() {
       </main>
       <Footer />
       <BackToTop />
+      <FloatingWhatsApp href={WHATSAPP.geral} lado="esquerda" />
     </div>
   );
 }
