@@ -259,14 +259,9 @@
   height: auto;
 }
 
-@utility nail-page {
-  --primary: var(--wine);
-  --primary-foreground: oklch(0.99 0.004 25);
-  --accent: oklch(0.7 0.16 28);
-  --accent-foreground: oklch(0.99 0.004 25);
-  --foreground: var(--rose-ink);
-  --muted: var(--blush);
-  --muted-foreground: oklch(0.48 0.035 25);
-  --border: oklch(0.88 0.035 25);
-  font-family: "Montserrat", sans-serif;
-}
+/*
+ * A paleta vinho da utility `nail-page` existia para a marca Studio
+ * Über na página de unhas. Com a padronização em SÜ Hair Concept, a
+ * página passou a usar a paleta dourada da marca e a regra ficou sem
+ * uso.
+ */

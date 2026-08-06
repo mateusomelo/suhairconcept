@@ -119,16 +119,12 @@ const GOOGLE: Depoimento[] = [
     texto: "Elika minha maravilhosa amei ❤ Nando atendimento excelente ❤ Simone Obrigada meu amor",
     doGoogle: true,
   },
-  {
-    id: "g12",
-    nota: 5,
-    nome: "Rosana Nogueira dos Santos",
-    quando: "5 meses atrás",
-    texto:
-      "Marcio do Studio Uber, faz a manutenção do meu mega hair DIVINAMENTE. Ja tentei em outros salões, mas ninguém acertou, pq gosto de tudo próximo a perfeição. O ambiente é ótimo, a equipe toda muito cuidadosa. Recomendo!",
-    doGoogle: true,
-  },
 ];
+
+// Fora do carrossel por ora: a avaliação de Rosana Nogueira dos Santos
+// cita "Studio Uber" e as diretrizes pedem que o site fale apenas em SÜ
+// Hair Concept. O texto não foi alterado — a avaliação apenas não é
+// exibida, e pode voltar se a decisão sobre a marca mudar.
 
 function Stars({ nota = 5, className = "" }: { nota?: number; className?: string }) {
   return (

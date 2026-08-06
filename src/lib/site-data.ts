@@ -41,9 +41,7 @@ export function whatsappUrl(mensagem: string): string {
 
 /** Mensagens por página, conforme as diretrizes de otimização. */
 export const WHATSAPP = {
-  geral: whatsappUrl(
-    "Olá! Acessei o site da SÜ Hair Concept e gostaria de consultar horários.",
-  ),
+  geral: whatsappUrl("Olá! Acessei o site da SÜ Hair Concept e gostaria de consultar horários."),
   megahair: whatsappUrl(
     "Olá! Acessei a página de Mega Hair da SÜ Hair Concept e gostaria de consultar horários.",
   ),
