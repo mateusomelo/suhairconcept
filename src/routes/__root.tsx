@@ -76,7 +76,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      // viewport-fit=cover é o que faz env(safe-area-inset-*) devolver um
+      // valor real no iPhone. Sem ele os botões fixos ficam sob a barra
+      // de gestos, mesmo com o cálculo aplicado.
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1, viewport-fit=cover",
+      },
       // Reforça o translate="no" do <html> para navegadores que já
       // guardaram a preferência de traduzir este site.
       { name: "google", content: "notranslate" },

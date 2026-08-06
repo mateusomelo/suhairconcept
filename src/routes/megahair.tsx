@@ -24,7 +24,7 @@ import megaResult from "@/assets/mega-resultado.jpg";
 import testimonialPoster from "@/assets/megahair-depoimento-poster.jpg";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { Reveal } from "@/components/site/Reveal";
-import { BASE_URL, SITE } from "@/lib/site-data";
+import { BASE_URL, SITE, WHATSAPP } from "@/lib/site-data";
 
 const TITLE = "Mega Hair Premium em São Paulo | SÜ Hair Concept";
 const DESCRIPTION =
@@ -100,7 +100,7 @@ function Cta({
 }) {
   return (
     <a
-      href={SITE.whatsapp}
+      href={WHATSAPP.megahair}
       target="_blank"
       rel="noreferrer"
       className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 text-xs font-semibold uppercase tracking-[0.16em] transition-transform hover:-translate-y-0.5 ${light ? "bg-background text-ink" : "bg-gold text-ink"}`}
@@ -404,7 +404,7 @@ function MegaHairLanding() {
               Instagram
             </a>
             <a
-              href={SITE.whatsapp}
+              href={WHATSAPP.megahair}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 hover:text-gold"
@@ -416,7 +416,7 @@ function MegaHairLanding() {
         </div>
       </footer>
 
-      <FloatingWhatsApp href={SITE.whatsapp} />
+      <FloatingWhatsApp href={WHATSAPP.megahair} />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 
 import logoSu from "@/assets/logo-su-marca.png";
-import { NAV_LINKS, SITE } from "@/lib/site-data";
+import { NAV_LINKS, SITE, WHATSAPP } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -79,7 +79,7 @@ export function Header() {
           <motion.a
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
-            href={SITE.whatsapp}
+            href={WHATSAPP.geral}
             target="_blank"
             rel="noreferrer"
             className="hidden items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.15em] text-black transition-shadow hover:shadow-[0_12px_30px_-12px_var(--gold)] sm:inline-flex"
@@ -117,7 +117,7 @@ export function Header() {
               </Link>
             ))}
             <a
-              href={SITE.whatsapp}
+              href={WHATSAPP.geral}
               target="_blank"
               rel="noreferrer"
               className="mt-4 rounded-full bg-gold py-3 text-center text-xs font-semibold uppercase tracking-[0.15em] text-black"

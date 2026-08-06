@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { MessageCircle, Sparkles } from "lucide-react";
 
 import { Reveal } from "@/components/site/Reveal";
-import { SITE } from "@/lib/site-data";
+import { SITE, WHATSAPP } from "@/lib/site-data";
 
 export function CtaSection() {
   return (
@@ -20,7 +20,7 @@ export function CtaSection() {
           <motion.a
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.97 }}
-            href={SITE.whatsapp}
+            href={WHATSAPP.geral}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-black"
@@ -30,7 +30,7 @@ export function CtaSection() {
           <motion.a
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.97 }}
-            href={SITE.whatsapp}
+            href={WHATSAPP.geral}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:border-gold hover:text-gold"

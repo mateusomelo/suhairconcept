@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
-import { SITE } from "@/lib/site-data";
+import { SITE, WHATSAPP } from "@/lib/site-data";
 
 /**
  * Perguntas por serviço. As de mega hair vêm do atendimento do salão; as
@@ -151,7 +151,7 @@ export function Faq() {
 
         <Reveal delay={0.15}>
           <a
-            href={SITE.whatsapp}
+            href={WHATSAPP.geral}
             target="_blank"
             rel="noreferrer"
             className="mt-12 inline-flex items-center justify-center border border-foreground px-8 py-3.5 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors hover:border-gold hover:bg-gold hover:text-black"

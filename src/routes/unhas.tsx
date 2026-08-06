@@ -28,7 +28,7 @@ import nailsDetail from "@/assets/unhas-detalhe.jpg";
 import nailsHero from "@/assets/unhas-hero.jpg";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { Reveal } from "@/components/site/Reveal";
-import { BASE_URL, SITE } from "@/lib/site-data";
+import { BASE_URL, SITE, WHATSAPP } from "@/lib/site-data";
 
 const TITLE = "Alongamento de Unhas | Studio Über — SÜ Hair Concept";
 const DESCRIPTION =
@@ -81,7 +81,7 @@ export const Route = createFileRoute("/unhas")({
 function NailCta({ inverse = false }: { inverse?: boolean }) {
   return (
     <a
-      href={SITE.whatsapp}
+      href={WHATSAPP.unhas}
       target="_blank"
       rel="noreferrer"
       className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 text-xs font-bold uppercase tracking-[0.12em] transition-transform hover:-translate-y-0.5 ${inverse ? "bg-background text-primary" : "bg-primary text-primary-foreground"}`}
@@ -181,7 +181,7 @@ function NailsLanding() {
                     <h3 className="mt-7 font-display text-2xl">{title}</h3>
                     <p className="mt-4 text-sm leading-7 text-muted-foreground">{text}</p>
                     <a
-                      href={SITE.whatsapp}
+                      href={WHATSAPP.unhas}
                       target="_blank"
                       rel="noreferrer"
                       className="mt-7 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-primary"
@@ -346,7 +346,7 @@ function NailsLanding() {
         </div>
       </footer>
 
-      <FloatingWhatsApp href={SITE.whatsapp} />
+      <FloatingWhatsApp href={WHATSAPP.unhas} />
     </div>
   );
 }

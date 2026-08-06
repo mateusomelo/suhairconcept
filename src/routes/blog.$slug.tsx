@@ -3,7 +3,7 @@ import { ArrowLeft, MessageCircle } from "lucide-react";
 import Markdown from "react-markdown";
 
 import { BlogShell, formatarData } from "@/components/site/BlogShell";
-import { BASE_URL, SITE } from "@/lib/site-data";
+import { BASE_URL, SITE, WHATSAPP } from "@/lib/site-data";
 import { supabase } from "@/lib/supabase";
 
 type PostPublico = {
@@ -111,7 +111,7 @@ function PostPage() {
         <aside className="mt-16 border-t border-border pt-10 text-center">
           <p className="font-display text-2xl leading-snug">Quer esse cuidado no seu cabelo?</p>
           <a
-            href={SITE.whatsapp}
+            href={WHATSAPP.blog}
             target="_blank"
             rel="noreferrer"
             className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-full bg-gold px-8 text-xs font-semibold uppercase tracking-[0.16em] text-ink"

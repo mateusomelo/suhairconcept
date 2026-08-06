@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
-import { SITE } from "@/lib/site-data";
+import { SITE, WHATSAPP } from "@/lib/site-data";
 
 const SERVICES = [
   { icon: Scissors, title: "Corte Feminino", text: "Cortes desenhados para o seu rosto, textura e rotina." },
@@ -50,7 +50,7 @@ export function Services() {
                   <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{s.text}</p>
                 </div>
                 <a
-                  href={SITE.whatsapp}
+                  href={WHATSAPP.geral}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-8 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground transition-colors group-hover:text-gold"

@@ -3,7 +3,7 @@ import { Instagram, MessageCircle } from "lucide-react";
 import type { ReactNode } from "react";
 
 import logoSu from "@/assets/logo-su-marca.png";
-import { SITE } from "@/lib/site-data";
+import { SITE, WHATSAPP } from "@/lib/site-data";
 
 export function formatarData(iso: string): string {
   return new Date(iso).toLocaleDateString("pt-BR", {
@@ -35,7 +35,7 @@ export function BlogShell({ children }: { children: ReactNode }) {
               O salão
             </a>
             <a
-              href={SITE.whatsapp}
+              href={WHATSAPP.blog}
               target="_blank"
               rel="noreferrer"
               className="flex min-h-10 items-center gap-2 rounded-full bg-gold px-5 text-[11px] font-semibold text-ink"

@@ -80,9 +80,9 @@ export function LocationHours() {
         <div id="contato" className="mt-20 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { icon: Phone, label: "Ligar Agora", href: SITE.phoneHref },
-            { icon: MessageCircle, label: "WhatsApp", href: SITE.whatsapp },
+            { icon: MessageCircle, label: "WhatsApp", href: WHATSAPP.geral },
             { icon: Navigation, label: "Como Chegar", href: SITE.mapsUrl },
-            { icon: CalendarCheck, label: "Agendar Online", href: SITE.whatsapp },
+            { icon: CalendarCheck, label: "Agendar Online", href: WHATSAPP.geral },
           ].map((c, i) => (
             <Reveal key={c.label} delay={i * 0.06}>
               <a

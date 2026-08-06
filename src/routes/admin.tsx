@@ -46,15 +46,39 @@ function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState<string | null>(null);
+  const [aviso, setAviso] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
 
   async function entrar(e: React.FormEvent) {
     e.preventDefault();
     setEnviando(true);
     setErro(null);
+    setAviso(null);
     const { error } = await supabase.auth.signInWithPassword({ email, password: senha });
     if (error) setErro("E-mail ou senha incorretos.");
     setEnviando(false);
+  }
+
+  // Sem isto, esquecer a senha significa ficar trancada fora do painel
+  // até alguém entrar no Supabase e redefinir na mão.
+  async function recuperarSenha() {
+    if (!email.trim()) {
+      setErro("Escreva seu e-mail acima para receber o link de recuperação.");
+      return;
+    }
+
+    setEnviando(true);
+    setErro(null);
+    const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: `${window.location.origin}/admin`,
+    });
+    setEnviando(false);
+
+    if (error) {
+      setErro("Não conseguimos enviar o e-mail. Confira o endereço e tente novamente.");
+      return;
+    }
+    setAviso("Enviamos um link de recuperação para o seu e-mail.");
   }
 
   return (
@@ -95,6 +119,7 @@ function Login() {
         </label>
 
         {erro && <p className="mt-5 text-sm text-red-600">{erro}</p>}
+        {aviso && <p className="mt-5 text-sm text-green-700">{aviso}</p>}
 
         <button
           type="submit"
@@ -102,6 +127,15 @@ function Login() {
           className="mt-8 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-gold text-xs font-semibold uppercase tracking-[0.16em] text-ink disabled:opacity-60"
         >
           {enviando ? <Loader2 className="size-4 animate-spin" /> : "Entrar"}
+        </button>
+
+        <button
+          type="button"
+          onClick={recuperarSenha}
+          disabled={enviando}
+          className="mt-5 w-full text-xs text-muted-foreground underline underline-offset-4 hover:text-gold disabled:opacity-60"
+        >
+          Esqueci minha senha
         </button>
       </form>
     </Centro>

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, HeartHandshake, Layers, ShieldCheck, Sparkles, Stethoscope } from "lucide-react";
 
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
-import { SITE } from "@/lib/site-data";
+import { SITE, WHATSAPP } from "@/lib/site-data";
 
 const TECHNIQUES = [
   { n: "01", title: "Mega Hair Fita Adesiva", text: "Aplicação rápida, plana e confortável — ideal para volume imediato." },
@@ -85,7 +85,7 @@ export function MegaHair() {
 
         <Reveal delay={0.1}>
           <a
-            href={SITE.whatsapp}
+            href={WHATSAPP.geral}
             target="_blank"
             rel="noreferrer"
             className="mt-10 inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-black transition-shadow hover:shadow-[0_18px_40px_-18px_var(--gold)]"

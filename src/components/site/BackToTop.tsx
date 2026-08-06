@@ -21,7 +21,9 @@ export function BackToTop() {
           exit={{ opacity: 0, scale: 0.8 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="Voltar ao topo"
-          className="fixed bottom-6 right-6 z-50 flex size-11 items-center justify-center rounded-full border border-gold/40 bg-foreground text-background shadow-lg transition-colors hover:bg-gold hover:text-black"
+          // Respeita a barra de gestos do iPhone, como o botão do WhatsApp.
+          style={{ bottom: "calc(1.5rem + env(safe-area-inset-bottom, 0px))" }}
+          className="fixed right-6 z-50 flex size-11 items-center justify-center rounded-full border border-gold/40 bg-foreground text-background shadow-lg transition-colors hover:bg-gold hover:text-black"
         >
           <ArrowUp className="size-4" />
         </motion.button>

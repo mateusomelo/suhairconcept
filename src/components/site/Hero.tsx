@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { MapPin, Sparkles } from "lucide-react";
 
 import heroPoster from "@/assets/hero-video-poster.jpg";
-import { SITE } from "@/lib/site-data";
+import { SITE, WHATSAPP } from "@/lib/site-data";
 
 export function Hero() {
   const { scrollY } = useScroll();
@@ -74,7 +74,7 @@ export function Hero() {
           <motion.a
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.97 }}
-            href={SITE.whatsapp}
+            href={WHATSAPP.geral}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-black shadow-[0_18px_40px_-18px_var(--gold)]"
