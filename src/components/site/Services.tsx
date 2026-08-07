@@ -90,17 +90,20 @@ export function Services() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
+        {/* Dois por linha já no celular: a lista inteira empilhada ficava
+            longa demais para rolar. grid-cols-2 (e não só sm:) mantém a
+            coluna presa ao pai via minmax(0,1fr). */}
+        <div className="mt-14 grid grid-cols-2 gap-px bg-border lg:grid-cols-4">
           {SERVICES.map((s, i) => (
             <Reveal key={s.title} delay={(i % 4) * 0.06}>
               <motion.article
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.35 }}
-                className="group flex h-full flex-col justify-between bg-background p-8"
+                className="group flex h-full flex-col justify-between bg-background p-5 sm:p-8"
               >
                 <div>
                   <s.icon className="size-6 text-gold" strokeWidth={1.2} />
-                  <h3 className="mt-6 font-display text-xl">{s.title}</h3>
+                  <h3 className="mt-4 font-display text-base sm:mt-6 sm:text-xl">{s.title}</h3>
                   {"su" in s && (
                     <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-gold">
                       {s.su}
@@ -112,7 +115,7 @@ export function Services() {
                   href={s.cta}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-8 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground transition-colors group-hover:text-gold"
+                  className="mt-6 inline-flex items-center gap-1.5 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.06em] text-foreground transition-colors group-hover:text-gold sm:mt-8 sm:gap-2 sm:text-[11px] sm:tracking-[0.2em]"
                 >
                   Saiba mais
                   <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
