@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, MessageCircle } from "lucide-react";
+import { ArrowLeft, Instagram, MessageCircle } from "lucide-react";
 import type { ReactNode } from "react";
 
 import logoSu from "@/assets/logo-su-marca.png";
@@ -31,8 +31,11 @@ export function BlogShell({ children }: { children: ReactNode }) {
             <Link to="/blog" className="hover:text-gold">
               Blog
             </Link>
-            <a href="/" className="hidden hover:text-gold sm:block">
-              O salão
+            {/* Visível também no celular: antes sumia abaixo de 640px e
+                a visitante ficava sem caminho de volta ao site. */}
+            <a href="/" className="flex items-center gap-1.5 hover:text-gold">
+              <ArrowLeft className="size-3.5" />
+              Voltar ao site
             </a>
             <a
               href={WHATSAPP.blog}

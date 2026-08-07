@@ -340,12 +340,22 @@ function Painel() {
             </p>
             <h1 className="mt-2 font-display text-3xl font-light">Matérias do blog</h1>
           </div>
-          <button
-            onClick={() => supabase.auth.signOut()}
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-muted-foreground hover:text-gold"
-          >
-            <LogOut className="size-4" /> Sair
-          </button>
+          <div className="flex items-center gap-5">
+            {/* Sair encerra a sessão; voltar apenas devolve ao site, sem
+                perder o login. Antes só existia a primeira opção. */}
+            <a
+              href="/"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-muted-foreground hover:text-gold"
+            >
+              <ArrowLeft className="size-4" /> Voltar ao site
+            </a>
+            <button
+              onClick={() => supabase.auth.signOut()}
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-muted-foreground hover:text-gold"
+            >
+              <LogOut className="size-4" /> Sair
+            </button>
+          </div>
         </header>
 
         <button

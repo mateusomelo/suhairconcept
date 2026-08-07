@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, Loader2, MapPin, Star } from "lucide-react";
+import { ArrowLeft, Check, Loader2, MapPin, Star } from "lucide-react";
 
 import logoSu from "@/assets/logo-su-marca.png";
 import { SITE } from "@/lib/site-data";
@@ -56,8 +56,18 @@ function AvaliarPage() {
 
   return (
     <div className="flex min-h-svh flex-col bg-offwhite text-foreground">
-      <header className="flex justify-center px-6 pt-12">
-        <img src={logoSu} alt="SÜ Hair Concept" className="h-14 w-auto object-contain" />
+      {/* O link de voltar existia só na tela de agradecimento. Quem
+          desistia de avaliar ficava sem saída a não ser o botão do
+          navegador. */}
+      <header className="mx-auto flex w-full max-w-md items-center justify-between gap-4 px-6 pt-8">
+        <a
+          href="/"
+          className="flex items-center gap-1.5 text-xs uppercase tracking-[0.14em] text-muted-foreground hover:text-gold"
+        >
+          <ArrowLeft className="size-4" />
+          Voltar
+        </a>
+        <img src={logoSu} alt="SÜ Hair Concept" className="h-10 w-auto object-contain" />
       </header>
 
       <main className="flex flex-1 items-center justify-center px-6 py-12">
