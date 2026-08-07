@@ -250,7 +250,12 @@ export function Reviews() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.45 }}
-              className="mt-14 grid gap-4 md:grid-cols-3"
+              // grid-cols-1 é obrigatório aqui: sem ele a coluna implícita
+              // é `auto` e se dimensiona pelo min-content, que o nome com
+              // `truncate` (nowrap) inflava até ~365px — largura fixa que
+              // estourava a tela em qualquer aparelho menor que isso.
+              // O Tailwind gera minmax(0,1fr), que prende a coluna ao pai.
+              className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3"
             >
               {visiveis.map((r) => (
                 <blockquote
@@ -258,7 +263,10 @@ export function Reviews() {
                   className="flex h-full flex-col border border-border bg-offwhite p-7"
                 >
                   <header className="flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-3">
+                    {/* min-w-0 também aqui: sem ele este container não
+                        encolhe, e um nome longo empurra o card para fora
+                        da tela em celulares estreitos. */}
+                    <div className="flex min-w-0 items-center gap-3">
                       {/* Inicial no lugar da foto: a imagem do perfil é da
                           cliente e não nos pertence para republicar. */}
                       <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-gold/15 font-display text-lg text-gold">
