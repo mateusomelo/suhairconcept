@@ -1,5 +1,11 @@
-import { MessageCircle } from "lucide-react";
-
+/**
+ * Atalho flutuante para o WhatsApp.
+ *
+ * Só o símbolo, em botão redondo: é o formato que as pessoas já
+ * reconhecem sem ler, ocupa pouco e não briga com o conteúdo. O
+ * `aria-label` garante que leitores de tela anunciem a ação, já que não
+ * há texto visível.
+ */
 export function FloatingWhatsApp({
   href,
   lado = "direita",
@@ -14,14 +20,21 @@ export function FloatingWhatsApp({
       target="_blank"
       rel="noreferrer"
       aria-label="Agendar pelo WhatsApp"
+      title="Agendar pelo WhatsApp"
       // env(safe-area-inset-bottom) afasta o botão da barra de gestos do
       // iPhone. Sem isso ele fica parcialmente sob a barra do Safari e
       // parte da área de toque se perde.
       style={{ bottom: "calc(1.25rem + env(safe-area-inset-bottom, 0px))" }}
-      className={`fixed z-50 flex min-h-11 items-center gap-2 rounded-full bg-[#25D366] px-5 text-xs font-semibold uppercase tracking-wide text-white shadow-lg transition-transform hover:-translate-y-0.5 ${lado === "esquerda" ? "left-5" : "right-5"}`}
+      className={`fixed z-50 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105 ${
+        lado === "esquerda" ? "left-5" : "right-5"
+      }`}
     >
-      <MessageCircle className="size-5 shrink-0" />
-      Agendar pelo WhatsApp
+      {/* Símbolo do WhatsApp em SVG: nítido em qualquer tela, sem
+          requisição de imagem e sem depender de arquivo externo. */}
+      <svg viewBox="0 0 24 24" fill="currentColor" className="size-7" aria-hidden="true">
+        <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z" />
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.21-8.24 8.21z" />
+      </svg>
     </a>
   );
 }
