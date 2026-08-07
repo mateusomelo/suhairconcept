@@ -183,12 +183,13 @@ function NailsLanding() {
                 O cuidado certo para cada fase das suas unhas.
               </h2>
             </Reveal>
-            <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Dois por linha já no celular, como na home. */}
+            <div className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
               {UNHAS_SERVICOS.map((s, i) => (
                 <Reveal key={s.nome} delay={(i % 3) * 0.06}>
-                  <article className="flex h-full flex-col border border-border bg-offwhite p-7">
+                  <article className="flex h-full flex-col border border-border bg-offwhite p-4 sm:p-7">
                     {/* Nome de busca em destaque, assinatura SÜ abaixo. */}
-                    <h3 className="font-display text-xl leading-snug">{s.nome}</h3>
+                    <h3 className="font-display text-base leading-snug sm:text-xl">{s.nome}</h3>
                     <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-gold">
                       {s.su}
                     </p>
@@ -196,9 +197,9 @@ function NailsLanding() {
                       href={s.cta}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-auto inline-flex items-center gap-2 pt-6 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground underline underline-offset-4 hover:text-gold"
+                      className="mt-auto inline-flex items-center gap-1.5 pt-5 text-[10px] font-semibold uppercase tracking-[0.02em] text-foreground underline underline-offset-4 hover:text-gold sm:gap-2 sm:pt-6 sm:text-[11px] sm:tracking-[0.12em]"
                     >
-                      Quero este serviço <ArrowRight className="size-3.5" />
+                      Quero este serviço <ArrowRight className="size-3 shrink-0 sm:size-3.5" />
                     </a>
                   </article>
                 </Reveal>

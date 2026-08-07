@@ -220,16 +220,20 @@ function MegaHairLanding() {
                 resultado respeita a saúde dos seus fios e parece parte de você.
               </p>
             </Reveal>
-            <div className="mt-14 grid border-l border-t border-border sm:grid-cols-2 lg:grid-cols-4">
+            {/* Dois por linha já no celular, como na home: empilhado
+                um a um a lista ficava longa demais para rolar. */}
+            <div className="mt-14 grid grid-cols-2 border-l border-t border-border lg:grid-cols-4">
               {MEGA_HAIR_SERVICOS.map((s, index) => (
                 <Reveal key={s.nome} delay={(index % 4) * 0.06}>
-                  <article className="flex min-h-64 flex-col border-b border-r border-border p-7 transition-colors hover:bg-offwhite">
-                    <span className="font-display text-3xl text-gold/70">
+                  <article className="flex min-h-56 flex-col border-b border-r border-border p-4 transition-colors hover:bg-offwhite sm:min-h-64 sm:p-7">
+                    <span className="font-display text-2xl text-gold/70 sm:text-3xl">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     {/* Nome de busca em destaque, assinatura SÜ abaixo —
                         o nome exclusivo nunca aparece sozinho. */}
-                    <h3 className="mt-7 font-display text-xl leading-snug">{s.nome}</h3>
+                    <h3 className="mt-5 font-display text-base leading-snug sm:mt-7 sm:text-xl">
+                      {s.nome}
+                    </h3>
                     <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-gold">
                       {s.su}
                     </p>
@@ -237,7 +241,7 @@ function MegaHairLanding() {
                       href={s.cta}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-auto pt-6 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground underline underline-offset-4 hover:text-gold"
+                      className="mt-auto pt-5 text-[10px] font-semibold uppercase tracking-[0.04em] text-foreground underline underline-offset-4 hover:text-gold sm:pt-6 sm:text-[11px] sm:tracking-[0.12em]"
                     >
                       Quero avaliação
                     </a>
