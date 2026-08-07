@@ -12,6 +12,9 @@ export const Route = createFileRoute("/admin")({
   }),
 });
 
+/** Tempo sem uso até o painel encerrar a sessão sozinho. */
+const INATIVIDADE_MS = 20 * 60 * 1000;
+
 function AdminPage() {
   const [session, setSession] = useState<Session | null>(null);
   const [carregando, setCarregando] = useState(true);
@@ -24,6 +27,28 @@ function AdminPage() {
     const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
     return () => sub.subscription.unsubscribe();
   }, []);
+
+  // Encerra a sessão após 20 minutos sem uso. O painel costuma ficar
+  // aberto no computador do salão, onde outras pessoas têm acesso — sem
+  // isso, quem sentasse depois entraria direto no painel.
+  useEffect(() => {
+    if (!session) return;
+
+    let relogio: ReturnType<typeof setTimeout>;
+    const reiniciar = () => {
+      clearTimeout(relogio);
+      relogio = setTimeout(() => void supabase.auth.signOut(), INATIVIDADE_MS);
+    };
+
+    const eventos = ["mousedown", "keydown", "scroll", "touchstart"] as const;
+    eventos.forEach((e) => window.addEventListener(e, reiniciar, { passive: true }));
+    reiniciar();
+
+    return () => {
+      clearTimeout(relogio);
+      eventos.forEach((e) => window.removeEventListener(e, reiniciar));
+    };
+  }, [session]);
 
   if (carregando) {
     return (
@@ -137,6 +162,13 @@ function Login() {
         >
           Esqueci minha senha
         </button>
+
+        <a
+          href="/"
+          className="mt-6 flex items-center justify-center gap-1.5 text-xs uppercase tracking-[0.14em] text-muted-foreground hover:text-gold"
+        >
+          <ArrowLeft className="size-4" /> Site
+        </a>
       </form>
     </Centro>
   );
@@ -347,7 +379,7 @@ function Painel() {
               href="/"
               className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-muted-foreground hover:text-gold"
             >
-              <ArrowLeft className="size-4" /> Voltar ao site
+              <ArrowLeft className="size-4" /> Site
             </a>
             <button
               onClick={() => supabase.auth.signOut()}

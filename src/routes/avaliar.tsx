@@ -65,7 +65,7 @@ function AvaliarPage() {
           className="flex items-center gap-1.5 text-xs uppercase tracking-[0.14em] text-muted-foreground hover:text-gold"
         >
           <ArrowLeft className="size-4" />
-          Voltar
+          Site
         </a>
         <img src={logoSu} alt="SÜ Hair Concept" className="h-10 w-auto object-contain" />
       </header>

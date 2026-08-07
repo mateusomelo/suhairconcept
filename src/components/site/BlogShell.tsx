@@ -35,7 +35,7 @@ export function BlogShell({ children }: { children: ReactNode }) {
                 a visitante ficava sem caminho de volta ao site. */}
             <a href="/" className="flex items-center gap-1.5 hover:text-gold">
               <ArrowLeft className="size-3.5" />
-              Voltar ao site
+              Site
             </a>
             <a
               href={WHATSAPP.blog}
