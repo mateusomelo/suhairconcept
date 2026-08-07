@@ -20,8 +20,8 @@ export function FloatingWhatsApp({
       style={{ bottom: "calc(1.25rem + env(safe-area-inset-bottom, 0px))" }}
       className={`fixed z-50 flex min-h-11 items-center gap-2 rounded-full bg-[#25D366] px-5 text-xs font-semibold uppercase tracking-wide text-white shadow-lg transition-transform hover:-translate-y-0.5 md:hidden ${lado === "esquerda" ? "left-5" : "right-5"}`}
     >
-      <MessageCircle className="size-5" />
-      Agendar
+      <MessageCircle className="size-5 shrink-0" />
+      Agendar pelo WhatsApp
     </a>
   );
 }
