@@ -114,20 +114,58 @@ function Index() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <MegaHair />
-        <Differentials />
-        <Philosophy />
-        <BeforeAfter />
-        <Gallery />
-        <Reviews />
-        <CtaSection />
-        <Faq />
-        <LocationHours />
-        <InstagramSection />
+      {/*
+       * No celular a home segue a ordem de prioridade das diretrizes:
+       * apresentação, serviços, mega hair, resultados, avaliações,
+       * localização e agendamento. O que não está nessa lista vai para
+       * o fim, para a visitante chegar ao agendamento sem rolar tudo.
+       *
+       * `lg:order-none` devolve a ordem do código no computador, onde a
+       * página longa não atrapalha.
+       */}
+      <main className="flex flex-col">
+        {/* A ordem do código é a do computador e não muda. Os números
+            abaixo valem só no celular; `lg:order-none` devolve tudo à
+            ordem original a partir de 1024px. */}
+        <div className="order-[1] lg:order-none">
+          <Hero />
+        </div>
+        <div className="order-[2] lg:order-none">
+          <About />
+        </div>
+        <div className="order-[3] lg:order-none">
+          <Services />
+        </div>
+        <div className="order-[4] lg:order-none">
+          <MegaHair />
+        </div>
+        <div className="order-[11] lg:order-none">
+          <Differentials />
+        </div>
+        <div className="order-[12] lg:order-none">
+          <Philosophy />
+        </div>
+        <div className="order-[5] lg:order-none">
+          <BeforeAfter />
+        </div>
+        <div className="order-[6] lg:order-none">
+          <Gallery />
+        </div>
+        <div className="order-[7] lg:order-none">
+          <Reviews />
+        </div>
+        <div className="order-[9] lg:order-none">
+          <CtaSection />
+        </div>
+        <div className="order-[10] lg:order-none">
+          <Faq />
+        </div>
+        <div className="order-[8] lg:order-none">
+          <LocationHours />
+        </div>
+        <div className="order-[13] lg:order-none">
+          <InstagramSection />
+        </div>
       </main>
       <Footer />
       <BackToTop />

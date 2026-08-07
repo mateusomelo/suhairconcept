@@ -9,6 +9,7 @@ import {
   Scissors,
   Sparkles,
   Waves,
+  Wind,
 } from "lucide-react";
 
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
@@ -51,6 +52,12 @@ const SERVICES = [
     title: "Mega Hair",
     su: "SÜ Extension Experience",
     text: "Volume e comprimento com aplicação imperceptível.",
+  },
+  {
+    icon: Wind,
+    title: "Escova Profissional",
+    su: "SÜ Brush Experience",
+    text: "Fio alinhado, movimento e brilho que duram.",
   },
   {
     icon: Droplets,
