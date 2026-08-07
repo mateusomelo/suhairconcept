@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Instagram, MessageCircle } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -28,9 +27,6 @@ export function BlogShell({ children }: { children: ReactNode }) {
             />
           </a>
           <nav className="flex items-center gap-7 text-xs uppercase tracking-[0.14em]">
-            <Link to="/blog" className="hover:text-gold">
-              Blog
-            </Link>
             {/* Visível também no celular: antes sumia abaixo de 640px e
                 a visitante ficava sem caminho de volta ao site. */}
             <a href="/" className="flex items-center gap-1.5 hover:text-gold">
