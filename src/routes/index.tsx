@@ -139,10 +139,13 @@ function Index() {
         <div className="order-[4] lg:order-none">
           <MegaHair />
         </div>
-        <div className="order-[11] lg:order-none">
+        {/* Fora da lista de prioridades: escondidas no celular com CSS,
+            não removidas. O conteúdo segue no HTML e o Google continua
+            lendo — inclusive o schema das perguntas frequentes. */}
+        <div className="hidden lg:block">
           <Differentials />
         </div>
-        <div className="order-[12] lg:order-none">
+        <div className="hidden lg:block">
           <Philosophy />
         </div>
         <div className="order-[5] lg:order-none">
@@ -157,13 +160,13 @@ function Index() {
         <div className="order-[9] lg:order-none">
           <CtaSection />
         </div>
-        <div className="order-[10] lg:order-none">
+        <div className="hidden lg:block">
           <Faq />
         </div>
         <div className="order-[8] lg:order-none">
           <LocationHours />
         </div>
-        <div className="order-[13] lg:order-none">
+        <div className="hidden lg:block">
           <InstagramSection />
         </div>
       </main>
