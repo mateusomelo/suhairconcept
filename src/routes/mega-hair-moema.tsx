@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
+  Accessibility,
   ArrowRight,
+  Car,
   Check,
+  Clock,
   Instagram,
   MapPin,
   MessageCircle,
   Play,
+  RefreshCw,
   ShieldCheck,
   Sparkles,
-  Star,
+  Wifi,
 } from "lucide-react";
 
 import logoSu from "@/assets/logo-su-marca.png";
@@ -21,15 +25,16 @@ import mg5 from "@/assets/mg-5.jpg";
 import mg6 from "@/assets/mg-6.jpg";
 import megaHero from "@/assets/mega-topo.jpg";
 import megaResult from "@/assets/mega-resultado.jpg";
+import megahairFachada from "@/assets/fachada-entrada.jpg";
 import testimonialPoster from "@/assets/megahair-depoimento-poster.jpg";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { Reveal } from "@/components/site/Reveal";
-import { BASE_URL, MEGA_HAIR_SERVICOS, SITE, WHATSAPP } from "@/lib/site-data";
+import { Reviews } from "@/components/site/Reviews";
+import { BASE_URL, HOURS, MEGA_HAIR_SERVICOS, SITE, WHATSAPP } from "@/lib/site-data";
 
 const TITLE = "Mega Hair Premium em São Paulo | SÜ Hair Concept";
 const DESCRIPTION =
   "Mega Hair premium com fios 100% humanos, aplicação segura e resultado natural no SÜ Hair Concept, em Moema.";
-
 
 const benefits = [
   "Fios 100% humanos e selecionados",
@@ -54,6 +59,60 @@ const missionValues = [
   {
     title: "Valores",
     text: "Elevar a autoestima por meio de experiências cuidadosamente criadas, em um ambiente sofisticado e acolhedor.",
+  },
+];
+
+/**
+ * Estrutura do salão.
+ *
+ * Todos os itens vêm da ficha do Google Meu Negócio do salão — são
+ * declarações da própria proprietária, não suposição nossa. Valet e
+ * pet friendly foram citados na consultoria mas NÃO constam na ficha,
+ * então ficam de fora até haver confirmação: prometer o que não existe
+ * gera reclamação quando a cliente chega.
+ */
+const ESTRUTURA = [
+  {
+    icon: Car,
+    title: "Estacionamento no local",
+    text: "Vaga descoberta e gratuita, sem precisar procurar lugar na rua.",
+  },
+  {
+    icon: Accessibility,
+    title: "Acessível de ponta a ponta",
+    text: "Entrada, banheiro, assento e estacionamento acessíveis para cadeira de rodas.",
+  },
+  {
+    icon: Wifi,
+    title: "Wi-Fi gratuito",
+    text: "Aplicação de mega hair leva horas — dá para trabalhar ou assistir enquanto isso.",
+  },
+  {
+    icon: MapPin,
+    title: "Bem localizado em Moema",
+    text: "Na Av. Pavão, a poucos minutos do metrô Moema e da Av. Ibirapuera.",
+  },
+];
+
+/**
+ * Manutenção.
+ *
+ * Sem prazos ou preços: a consultoria não passou esses números e
+ * inventá-los viraria promessa falsa. O prazo real é definido na
+ * avaliação, que é o que o texto diz.
+ */
+const MANUTENCAO = [
+  {
+    title: "Para quem aplicou aqui",
+    text: "Acompanhamos o crescimento do seu cabelo e reposicionamos os fios na hora certa, preservando a saúde do fio natural.",
+  },
+  {
+    title: "Para quem aplicou em outro lugar",
+    text: "Você não precisa ter feito a aplicação conosco. Avaliamos o que já está no seu cabelo e assumimos a manutenção a partir dali.",
+  },
+  {
+    title: "Pacotes de manutenção",
+    text: "Em vez de pagar avulso a cada retorno, você fecha um pacote e mantém o resultado sempre em dia.",
   },
 ];
 
@@ -310,21 +369,34 @@ function MegaHairLanding() {
           </div>
         </section>
 
-        <section className="bg-background py-24 lg:py-32">
-          <Reveal className="mx-auto max-w-7xl px-6 lg:px-10">
-            <p className="text-xs uppercase tracking-[0.2em] text-gold">Nossa essência</p>
-            <h2 className="mt-4 max-w-2xl font-display text-4xl font-light sm:text-5xl">
-              Missão, visão e valores que guiam cada atendimento.
-            </h2>
-            <div className="mt-14 grid gap-6 sm:grid-cols-3">
-              {missionValues.map((item) => (
-                <div key={item.title} className="border border-border bg-background p-8">
-                  <h3 className="font-display text-2xl text-gold">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-muted-foreground">{item.text}</p>
-                </div>
+        <section id="manutencao" className="bg-background py-24 lg:py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <Reveal className="max-w-2xl">
+              <p className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gold">
+                <RefreshCw className="size-4" /> Manutenção
+              </p>
+              <h2 className="mt-4 font-display text-4xl font-light sm:text-5xl">
+                Mega hair não acaba na aplicação.
+              </h2>
+              <p className="mt-5 text-sm leading-7 text-muted-foreground">
+                O cabelo cresce e os fios precisam voltar ao lugar. Cuidamos dessa etapa com a mesma
+                atenção da primeira aplicação — inclusive de quem aplicou fora daqui.
+              </p>
+            </Reveal>
+            <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
+              {MANUTENCAO.map((item, i) => (
+                <Reveal key={item.title} delay={(i % 3) * 0.06}>
+                  <article className="flex h-full flex-col border border-border bg-offwhite p-6 sm:p-8">
+                    <h3 className="font-display text-xl leading-snug">{item.title}</h3>
+                    <p className="mt-4 text-sm leading-7 text-muted-foreground">{item.text}</p>
+                  </article>
+                </Reveal>
               ))}
             </div>
-          </Reveal>
+            <Reveal delay={0.2} className="mt-10">
+              <Cta label="Consultar manutenção" />
+            </Reveal>
+          </div>
         </section>
 
         <section className="bg-ink py-24 text-background lg:py-32">
@@ -359,21 +431,104 @@ function MegaHairLanding() {
           </Reveal>
         </section>
 
-        <section className="bg-offwhite py-24 text-center">
-          <Reveal className="mx-auto max-w-3xl px-6">
-            <div className="flex justify-center gap-1 text-gold">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-5 fill-current" />
+        {/* Substitui uma citação genérica e sem autor pelas avaliações
+            reais do Google — as mesmas da home, para não haver duas
+            listas divergentes. Todas as 11 são de 5 estrelas. */}
+        <Reviews />
+
+        <section className="bg-offwhite py-24 lg:py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <Reveal className="max-w-2xl">
+              <p className="text-xs uppercase tracking-[0.2em] text-gold">O salão</p>
+              <h2 className="mt-4 font-display text-4xl font-light sm:text-5xl">
+                Uma estrutura pensada para o seu conforto.
+              </h2>
+              <p className="mt-5 text-sm leading-7 text-muted-foreground">
+                Aplicação de mega hair pede tempo. Aqui você passa esse tempo bem.
+              </p>
+            </Reveal>
+            <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {ESTRUTURA.map((item, i) => (
+                <Reveal key={item.title} delay={(i % 4) * 0.06}>
+                  <article className="flex h-full flex-col border border-border bg-background p-6">
+                    <item.icon className="size-6 text-gold" strokeWidth={1.4} />
+                    <h3 className="mt-5 font-display text-lg leading-snug">{item.title}</h3>
+                    <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{item.text}</p>
+                  </article>
+                </Reveal>
               ))}
             </div>
-            <blockquote className="mt-7 font-display text-3xl font-light leading-snug">
-              “Um atendimento cuidadoso do início ao fim e um resultado tão natural que ninguém
-              percebe onde começa o alongamento.”
-            </blockquote>
-            <p className="mt-5 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-              Experiência SÜ Hair Concept
-            </p>
-          </Reveal>
+          </div>
+        </section>
+
+        <section id="onde-estamos" className="bg-background py-24 lg:py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <Reveal className="max-w-2xl">
+              <p className="text-xs uppercase tracking-[0.2em] text-gold">Onde estamos</p>
+              <h2 className="mt-4 font-display text-4xl font-light sm:text-5xl">
+                Venha nos conhecer em Moema.
+              </h2>
+            </Reveal>
+
+            <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:items-start">
+              <Reveal>
+                <img
+                  src={megahairFachada}
+                  alt="Fachada do SÜ Hair Concept na Av. Pavão, 362, em São Paulo"
+                  width={1200}
+                  height={1142}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full border border-border object-cover"
+                />
+                <address className="mt-7 not-italic">
+                  <span className="font-display text-2xl">{SITE.address.street}</span>
+                  <span className="mt-2 block text-sm text-muted-foreground">
+                    {SITE.address.district} — {SITE.address.city}
+                  </span>
+                  <span className="block text-sm text-muted-foreground">
+                    CEP {SITE.address.zip}
+                  </span>
+                </address>
+                <a
+                  href={SITE.mapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-full border border-ink px-7 text-xs font-semibold uppercase tracking-[0.16em] transition-transform hover:-translate-y-0.5"
+                >
+                  <MapPin className="size-4" /> Como chegar
+                </a>
+              </Reveal>
+
+              <Reveal delay={0.1}>
+                <div className="border border-border bg-offwhite p-7 sm:p-9">
+                  <h3 className="flex items-center gap-3 font-display text-2xl">
+                    <Clock className="size-5 text-gold" /> Horário de funcionamento
+                  </h3>
+                  <dl className="mt-7 divide-y divide-border">
+                    {HOURS.map((h) => (
+                      <div key={h.day} className="flex items-baseline justify-between gap-4 py-3.5">
+                        <dt className="text-sm text-muted-foreground">{h.day}</dt>
+                        <dd
+                          className={`text-sm font-semibold ${
+                            h.time === "Fechado" ? "text-muted-foreground" : ""
+                          }`}
+                        >
+                          {h.time}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p className="mt-7 text-xs leading-relaxed text-muted-foreground">
+                    Atendimento com hora marcada. A aplicação de mega hair leva algumas horas, então
+                    combinamos o melhor horário pelo WhatsApp.
+                  </p>
+                  <div className="mt-7">
+                    <Cta label="Agendar meu horário" />
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </div>
         </section>
 
         <section className="bg-gold py-20 text-ink">
@@ -387,6 +542,26 @@ function MegaHairLanding() {
               </h2>
             </div>
             <Cta label="Quero transformar meu cabelo" light />
+          </Reveal>
+        </section>
+
+        {/* Institucional fica depois do CTA de propósito: é conteúdo de
+            marca, não de conversão, e antes disputava atenção no meio
+            da página. */}
+        <section className="bg-background py-24 lg:py-32">
+          <Reveal className="mx-auto max-w-7xl px-6 lg:px-10">
+            <p className="text-xs uppercase tracking-[0.2em] text-gold">Nossa essência</p>
+            <h2 className="mt-4 max-w-2xl font-display text-4xl font-light sm:text-5xl">
+              Missão, visão e valores que guiam cada atendimento.
+            </h2>
+            <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {missionValues.map((item) => (
+                <div key={item.title} className="border border-border bg-background p-6 sm:p-8">
+                  <h3 className="font-display text-2xl text-gold">{item.title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-muted-foreground">{item.text}</p>
+                </div>
+              ))}
+            </div>
           </Reveal>
         </section>
       </main>
