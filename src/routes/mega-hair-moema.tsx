@@ -92,18 +92,25 @@ function Cta({
   );
 }
 
+/** ID do Short no canal @Suhairconcept: youtube.com/shorts/L_6_huNm6qg */
+const DEPOIMENTO_YT = "L_6_huNm6qg";
+
 function VideoTestimonial() {
   const [playing, setPlaying] = useState(false);
 
   return (
     <div className="relative mx-auto aspect-[9/16] w-full max-w-sm overflow-hidden rounded-2xl bg-ink shadow-2xl">
       {playing ? (
-        <video
-          src="/videos/megahair-depoimento.mp4"
-          controls
-          autoPlay
-          playsInline
-          className="size-full object-cover"
+        // O iframe só é criado depois do clique: sem isso o YouTube
+        // baixaria o próprio player em toda visita à página.
+        // nocookie evita rastreamento de quem nem assistiu.
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${DEPOIMENTO_YT}?autoplay=1&playsinline=1&rel=0&modestbranding=1`}
+          title="Depoimento de cliente sobre o mega hair no SÜ Hair Concept"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+          className="size-full border-0"
         />
       ) : (
         <button
@@ -114,7 +121,10 @@ function VideoTestimonial() {
         >
           <img
             src={testimonialPoster}
-            alt="Depoimento em vídeo sobre o resultado do mega hair"
+            alt="Cliente do SÜ Hair Concept falando sobre o resultado do mega hair"
+            width={720}
+            height={1280}
+            loading="lazy"
             className="size-full object-cover"
           />
           <span className="absolute inset-0 flex items-center justify-center bg-ink/25 transition-colors group-hover:bg-ink/40">
