@@ -88,6 +88,15 @@ function AvaliarPage() {
     }
 
     setEstado("pronto");
+
+    // Enviou, vai direto para o Google. A tela de agradecimento continua
+    // sendo renderizada por baixo: se o navegador segurar a ida ou a
+    // cliente voltar, ela ainda encontra o botão para avaliar.
+    //
+    // Vale para TODO MUNDO, independente da nota. Mandar só quem deu 4
+    // ou 5 estrelas seria filtragem de avaliação, proibida pelo Google
+    // desde 2018 e motivo de punição no perfil do salão.
+    window.location.href = SITE.googleReview;
   }
 
   return (
