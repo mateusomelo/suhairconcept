@@ -7,9 +7,9 @@ import {
   Heart,
   Instagram,
   MessageCircle,
+  RefreshCw,
   ShieldCheck,
   Sparkles,
-  Star,
 } from "lucide-react";
 
 import logoSu from "@/assets/logo-su-marca.png";
@@ -28,7 +28,10 @@ import unMani4 from "@/assets/un-mani4.jpg";
 import nailsDetail from "@/assets/unhas-detalhe.jpg";
 import nailsHero from "@/assets/unhas-hero.jpg";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
+import { LocationHours } from "@/components/site/LocationHours";
 import { Reveal } from "@/components/site/Reveal";
+import { Reviews, type Depoimento } from "@/components/site/Reviews";
+import { SalonStructure } from "@/components/site/SalonStructure";
 import { BASE_URL, SITE, UNHAS_SERVICOS, WHATSAPP } from "@/lib/site-data";
 
 const TITLE = "Alongamento de Unhas em Moema | SÜ Hair Concept";
@@ -40,6 +43,83 @@ const DESCRIPTION =
  * SÜ entram depois, quando a planilha de correspondência chegar — não
  * são inventados aqui.
  */
+
+/**
+ * Avaliações do Google que falam de unhas, transcritas palavra por
+ * palavra dos links enviados pelo salão.
+ *
+ * Uma das seis ficou de fora: a de Cilene Cobos tem 5 estrelas, mas o
+ * texto é uma reclamação sobre a cobrança separada de cutícula e
+ * esmalte, com os valores. Publicar como depoimento afastaria cliente
+ * em vez de atrair — a nota alta não muda o que está escrito.
+ */
+const AVALIACOES_UNHAS: Depoimento[] = [
+  {
+    id: "un1",
+    nota: 5,
+    nome: "Mariana Serata",
+    quando: "5 meses atrás",
+    texto: "Fiz unha em gel com a Amanda e ficou maravilhosa! Super recomendo",
+    doGoogle: true,
+  },
+  {
+    id: "un2",
+    nota: 5,
+    nome: "Isabel Sigale",
+    quando: "5 meses atrás",
+    texto:
+      "Venho agradecer o Atendimento da minha manicure Simone pelo excelente atendimento sempre que sou atendida.",
+    doGoogle: true,
+  },
+  {
+    id: "un3",
+    nota: 5,
+    nome: "Cristina Doria",
+    quando: "4 meses atrás",
+    texto:
+      "Foi ótima experiência! não esperei para ser atendido, foi feita manicure bem cuidadosa e tomei um capuccino quentinho!",
+    doGoogle: true,
+  },
+  {
+    id: "un4",
+    nota: 5,
+    nome: "Fernanda Farias de Lima Sgarbi",
+    quando: "2 anos atrás",
+    texto:
+      "Ótima experiência !! Fiz minhas unhas em Acrílico para meu casamento ( um dia antes da celebração) ; o atendimento foi excelente !!! As unhas ficaram lindas !!!!",
+    doGoogle: true,
+  },
+  {
+    id: "un5",
+    nota: 5,
+    nome: "Ana Silvia Junqueira",
+    quando: "3 anos atrás",
+    texto:
+      "Atendimento excelente! As unhas de acrílico são excelentes, além disso fiz um corte com o Márcio, que arrasou. Faço sempre minha unhas com a Aline, além de super competente é um doce de pessoa. Instalação é bem limpa e nova. Recomendo todos os serviços que já fiz lá.",
+    doGoogle: true,
+  },
+];
+
+/**
+ * Manutenção.
+ *
+ * Sem prazos ou preços: esses números não foram passados e inventá-los
+ * viraria promessa falsa. O intervalo real sai na avaliação.
+ */
+const MANUTENCAO = [
+  {
+    title: "Para quem alongou aqui",
+    text: "Acompanhamos o crescimento da unha natural e refazemos a base na hora certa, preservando a saúde da sua unha.",
+  },
+  {
+    title: "Para quem alongou em outro lugar",
+    text: "Você não precisa ter feito o alongamento conosco. Avaliamos o que já está nas suas unhas e assumimos a manutenção a partir dali.",
+  },
+  {
+    title: "Pacotes de manutenção",
+    text: "Em vez de pagar avulso a cada retorno, você fecha um pacote e mantém suas unhas sempre em dia.",
+  },
+];
 
 // Diferenciais listados nas diretrizes de otimização.
 const DIFERENCIAIS = [
@@ -85,7 +165,13 @@ export const Route = createFileRoute("/alongamento-de-unhas-moema")({
   }),
 });
 
-function NailCta({ inverse = false }: { inverse?: boolean }) {
+function NailCta({
+  inverse = false,
+  label = "Quero agendar meu horário",
+}: {
+  inverse?: boolean;
+  label?: string;
+}) {
   return (
     <a
       href={WHATSAPP.unhas}
@@ -94,7 +180,7 @@ function NailCta({ inverse = false }: { inverse?: boolean }) {
       className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 text-xs font-semibold uppercase tracking-[0.16em] transition-transform hover:-translate-y-0.5 ${inverse ? "bg-background text-ink" : "bg-gold text-ink"}`}
     >
       <MessageCircle className="size-4" />
-      Quero agendar meu horário
+      {label}
     </a>
   );
 }
@@ -311,22 +397,43 @@ function NailsLanding() {
           </Reveal>
         </section>
 
-        <section className="bg-offwhite py-24 text-center">
-          <Reveal className="mx-auto max-w-3xl px-6">
-            <div className="flex justify-center gap-1 text-gold">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-5 fill-current" />
+        <section id="manutencao" className="bg-background py-24 lg:py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <Reveal className="max-w-2xl">
+              <p className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gold">
+                <RefreshCw className="size-4" /> Manutenção
+              </p>
+              <h2 className="mt-4 font-display text-4xl font-light sm:text-5xl">
+                O alongamento não acaba na aplicação.
+              </h2>
+              <p className="mt-5 text-sm leading-7 text-muted-foreground">
+                A unha natural cresce e o alongamento precisa acompanhar. Cuidamos dessa etapa com a
+                mesma atenção da primeira aplicação — inclusive de quem alongou fora daqui.
+              </p>
+            </Reveal>
+            <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
+              {MANUTENCAO.map((item, i) => (
+                <Reveal key={item.title} delay={(i % 3) * 0.06}>
+                  <article className="flex h-full flex-col border border-border bg-offwhite p-6 sm:p-8">
+                    <h3 className="font-display text-xl leading-snug">{item.title}</h3>
+                    <p className="mt-4 text-sm leading-7 text-muted-foreground">{item.text}</p>
+                  </article>
+                </Reveal>
               ))}
             </div>
-            <blockquote className="mt-7 font-display text-3xl font-light leading-snug">
-              “Amei o cuidado e a delicadeza. Minhas unhas ficaram finas, naturais e exatamente no
-              formato que eu queria.”
-            </blockquote>
-            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-              Cliente SÜ Hair Concept
-            </p>
-          </Reveal>
+            <Reveal delay={0.2} className="mt-10">
+              <NailCta label="Consultar manutenção" />
+            </Reveal>
+          </div>
         </section>
+
+        {/* Substitui uma citação genérica e sem autor pelas avaliações
+            reais do Google que falam de unhas. Todas 5 estrelas. */}
+        <Reviews lista={AVALIACOES_UNHAS} titulo="Quem fez as unhas aqui, recomenda." />
+
+        <SalonStructure chamada="Alongamento pede tempo na cadeira. Aqui você passa esse tempo bem." />
+
+        <LocationHours />
 
         <section className="bg-gold py-20 text-ink">
           <Reveal className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-6 md:flex-row md:items-center lg:px-10">

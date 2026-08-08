@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  Accessibility,
   ArrowRight,
-  Car,
   Check,
   Instagram,
   MapPin,
@@ -12,7 +10,6 @@ import {
   RefreshCw,
   ShieldCheck,
   Sparkles,
-  Wifi,
 } from "lucide-react";
 
 import logoSu from "@/assets/logo-su-marca.png";
@@ -29,6 +26,7 @@ import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { Reveal } from "@/components/site/Reveal";
 import { LocationHours } from "@/components/site/LocationHours";
 import { Reviews, type Depoimento } from "@/components/site/Reviews";
+import { SalonStructure } from "@/components/site/SalonStructure";
 import { BASE_URL, MEGA_HAIR_SERVICOS, SITE, WHATSAPP } from "@/lib/site-data";
 
 const TITLE = "Mega Hair Premium em São Paulo | SÜ Hair Concept";
@@ -58,38 +56,6 @@ const missionValues = [
   {
     title: "Valores",
     text: "Elevar a autoestima por meio de experiências cuidadosamente criadas, em um ambiente sofisticado e acolhedor.",
-  },
-];
-
-/**
- * Estrutura do salão.
- *
- * Todos os itens vêm da ficha do Google Meu Negócio do salão — são
- * declarações da própria proprietária, não suposição nossa. Valet e
- * pet friendly foram citados na consultoria mas NÃO constam na ficha,
- * então ficam de fora até haver confirmação: prometer o que não existe
- * gera reclamação quando a cliente chega.
- */
-const ESTRUTURA = [
-  {
-    icon: Car,
-    title: "Estacionamento no local",
-    text: "Vaga descoberta e gratuita, sem precisar procurar lugar na rua.",
-  },
-  {
-    icon: Accessibility,
-    title: "Acessível de ponta a ponta",
-    text: "Entrada, banheiro, assento e estacionamento acessíveis para cadeira de rodas.",
-  },
-  {
-    icon: Wifi,
-    title: "Wi-Fi gratuito",
-    text: "Aplicação de mega hair leva horas — dá para trabalhar ou assistir enquanto isso.",
-  },
-  {
-    icon: MapPin,
-    title: "Bem localizado em Moema",
-    text: "Na Av. Pavão, a poucos minutos do metrô Moema e da Av. Ibirapuera.",
   },
 ];
 
@@ -498,37 +464,9 @@ function MegaHairLanding() {
 
         {/* Só avaliações que falam de mega hair: numa landing page de um
             serviço, elogio a outro serviço não convence. Todas 5 estrelas. */}
-        <Reviews
-          lista={AVALIACOES_MEGA_HAIR}
-          titulo="Quem fez mega hair aqui, recomenda."
-        />
+        <Reviews lista={AVALIACOES_MEGA_HAIR} titulo="Quem fez mega hair aqui, recomenda." />
 
-        <section className="bg-offwhite py-24 lg:py-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <Reveal className="max-w-2xl">
-              <p className="text-xs uppercase tracking-[0.2em] text-gold">O salão</p>
-              <h2 className="mt-4 font-display text-4xl font-light sm:text-5xl">
-                Uma estrutura pensada para o seu conforto.
-              </h2>
-              <p className="mt-5 text-sm leading-7 text-muted-foreground">
-                Aplicação de mega hair pede tempo. Aqui você passa esse tempo bem.
-              </p>
-            </Reveal>
-            <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {ESTRUTURA.map((item, i) => (
-                <Reveal key={item.title} delay={(i % 4) * 0.06}>
-                  <article className="flex h-full flex-col border border-border bg-background p-6">
-                    <item.icon className="size-6 text-gold" strokeWidth={1.4} />
-                    <h3 className="mt-5 font-display text-lg leading-snug">{item.title}</h3>
-                    <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-                      {item.text}
-                    </p>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
+        <SalonStructure chamada="Aplicação de mega hair pede tempo. Aqui você passa esse tempo bem." />
 
         {/* Mesmo bloco de localização e horários do site principal, com
             mapa — em vez de uma versão própria só desta página. */}
