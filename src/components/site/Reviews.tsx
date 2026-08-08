@@ -6,7 +6,7 @@ import { Reveal, SectionLabel } from "@/components/site/Reveal";
 import { SITE } from "@/lib/site-data";
 import { supabase } from "@/lib/supabase";
 
-type Depoimento = {
+export type Depoimento = {
   id: string;
   nota: number;
   texto: string;
@@ -163,14 +163,27 @@ function SeloGoogle() {
 const POR_PAGINA = 3;
 const INTERVALO = 7000;
 
-export function Reviews() {
-  const [depoimentos, setDepoimentos] = useState<Depoimento[]>(GOOGLE);
+export function Reviews({
+  lista,
+  titulo = "Quem vive a experiência, recomenda.",
+}: {
+  /**
+   * Lista fixa de depoimentos. Serve para as landing pages, que precisam
+   * mostrar só as avaliações do serviço daquela página — uma cliente
+   * lendo sobre mega hair não se convence com elogio a sobrancelha.
+   * Quando informada, a busca no Supabase é pulada.
+   */
+  lista?: Depoimento[];
+  titulo?: string;
+} = {}) {
+  const [depoimentos, setDepoimentos] = useState<Depoimento[]>(lista ?? GOOGLE);
   const [pagina, setPagina] = useState(0);
   const [pausado, setPausado] = useState(false);
 
   // Depoimentos aprovados na pesquisa de satisfação entram junto com os
   // do Google, sem o selo, já que vieram pelo site.
   useEffect(() => {
+    if (lista) return;
     let ativo = true;
 
     supabase
@@ -194,7 +207,7 @@ export function Reviews() {
     return () => {
       ativo = false;
     };
-  }, []);
+  }, [lista]);
 
   const totalPaginas = Math.ceil(depoimentos.length / POR_PAGINA);
 
@@ -214,7 +227,7 @@ export function Reviews() {
           <Reveal className="max-w-2xl">
             <SectionLabel>Avaliações</SectionLabel>
             <h2 className="mt-6 font-display text-3xl font-light leading-tight sm:text-5xl">
-              Quem vive a experiência, recomenda.
+              {titulo}
             </h2>
           </Reveal>
           <Reveal delay={0.1}>

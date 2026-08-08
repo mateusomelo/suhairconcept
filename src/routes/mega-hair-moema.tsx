@@ -5,7 +5,6 @@ import {
   ArrowRight,
   Car,
   Check,
-  Clock,
   Instagram,
   MapPin,
   MessageCircle,
@@ -25,12 +24,12 @@ import mg5 from "@/assets/mg-5.jpg";
 import mg6 from "@/assets/mg-6.jpg";
 import megaHero from "@/assets/mega-topo.jpg";
 import megaResult from "@/assets/mega-resultado.jpg";
-import megahairFachada from "@/assets/fachada-entrada.jpg";
 import testimonialPoster from "@/assets/megahair-depoimento-poster.jpg";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { Reveal } from "@/components/site/Reveal";
-import { Reviews } from "@/components/site/Reviews";
-import { BASE_URL, HOURS, MEGA_HAIR_SERVICOS, SITE, WHATSAPP } from "@/lib/site-data";
+import { LocationHours } from "@/components/site/LocationHours";
+import { Reviews, type Depoimento } from "@/components/site/Reviews";
+import { BASE_URL, MEGA_HAIR_SERVICOS, SITE, WHATSAPP } from "@/lib/site-data";
 
 const TITLE = "Mega Hair Premium em São Paulo | SÜ Hair Concept";
 const DESCRIPTION =
@@ -113,6 +112,72 @@ const MANUTENCAO = [
   {
     title: "Pacotes de manutenção",
     text: "Em vez de pagar avulso a cada retorno, você fecha um pacote e mantém o resultado sempre em dia.",
+  },
+];
+
+/**
+ * Avaliações do Google que falam especificamente de mega hair,
+ * transcritas palavra por palavra dos links enviados pelo salão.
+ *
+ * Duas das oito enviadas ficaram de fora porque o texto da própria
+ * cliente cita "Studio Uber", a marca que saiu do site — e reescrever
+ * a fala de alguém para trocar o nome seria falsificar o depoimento.
+ * São elas: Rosana Nogueira dos Santos e Palloma Barbosa.
+ */
+const AVALIACOES_MEGA_HAIR: Depoimento[] = [
+  {
+    id: "mh1",
+    nota: 5,
+    nome: "Mariana Savio Trilho",
+    quando: "um mês atrás",
+    texto:
+      "Coloquei mega hair, fiz gloss e hidratação com o Marcio, profissional excelente, estou muito satisfeita.",
+    doGoogle: true,
+  },
+  {
+    id: "mh2",
+    nota: 5,
+    nome: "Jessica Cavalcante",
+    quando: "4 meses atrás",
+    texto:
+      "Simplesmente impecável! ✨ Preciso deixar registrado o quanto estou encantada com o trabalho do Márcio Nunes e da Érica. Não são apenas profissionais, eles realmente entendem de cabelo e, principalmente, de cuidado com a cliente. Cheguei com o cabelo extremamente fragilizado após um corte químico, insegura… e encontrei acolhimento, atenção e um direcionamento real para recuperação. O megahair é perfeito, super natural e leve. Hoje posso dizer que recuperei não só meu cabelo, mas também minha autoestima.",
+    doGoogle: true,
+  },
+  {
+    id: "mh3",
+    nota: 5,
+    nome: "Shana Agostini",
+    quando: "5 meses atrás",
+    texto:
+      "O Márcio e sua assistente Erica são os melhores que existem!!! Só faço meu mega hair com eles, ARRASAM, os melhores de SP!",
+    doGoogle: true,
+  },
+  {
+    id: "mh4",
+    nota: 5,
+    nome: "Eurita Cardoso",
+    quando: "um ano atrás",
+    texto:
+      "Primeira vez no salão e já saí de lá apaixonada. Fiz meu mega hair com o profissional Márcio Nunes. Um excelente profissional, amei seu trabalho. Retornarei em breve.",
+    doGoogle: true,
+  },
+  {
+    id: "mh5",
+    nota: 5,
+    nome: "Ilse Andriotti",
+    quando: "4 anos atrás",
+    texto:
+      "Atendimento e serviços maravilhosos! O Marcio é o melhor para colocação de megahair 😍😍😍",
+    doGoogle: true,
+  },
+  {
+    id: "mh6",
+    nota: 5,
+    nome: "Karla Bustamante",
+    quando: "4 anos atrás",
+    texto:
+      "Muito bom serviço.. eu fui fazer um mega hair e umas luzes.. eles cuidaram muito bem dos meus cabelos !!!!!",
+    doGoogle: true,
   },
 ];
 
@@ -431,10 +496,12 @@ function MegaHairLanding() {
           </Reveal>
         </section>
 
-        {/* Substitui uma citação genérica e sem autor pelas avaliações
-            reais do Google — as mesmas da home, para não haver duas
-            listas divergentes. Todas as 11 são de 5 estrelas. */}
-        <Reviews />
+        {/* Só avaliações que falam de mega hair: numa landing page de um
+            serviço, elogio a outro serviço não convence. Todas 5 estrelas. */}
+        <Reviews
+          lista={AVALIACOES_MEGA_HAIR}
+          titulo="Quem fez mega hair aqui, recomenda."
+        />
 
         <section className="bg-offwhite py-24 lg:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -453,7 +520,9 @@ function MegaHairLanding() {
                   <article className="flex h-full flex-col border border-border bg-background p-6">
                     <item.icon className="size-6 text-gold" strokeWidth={1.4} />
                     <h3 className="mt-5 font-display text-lg leading-snug">{item.title}</h3>
-                    <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{item.text}</p>
+                    <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                      {item.text}
+                    </p>
                   </article>
                 </Reveal>
               ))}
@@ -461,75 +530,9 @@ function MegaHairLanding() {
           </div>
         </section>
 
-        <section id="onde-estamos" className="bg-background py-24 lg:py-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <Reveal className="max-w-2xl">
-              <p className="text-xs uppercase tracking-[0.2em] text-gold">Onde estamos</p>
-              <h2 className="mt-4 font-display text-4xl font-light sm:text-5xl">
-                Venha nos conhecer em Moema.
-              </h2>
-            </Reveal>
-
-            <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:items-start">
-              <Reveal>
-                <img
-                  src={megahairFachada}
-                  alt="Fachada do SÜ Hair Concept na Av. Pavão, 362, em São Paulo"
-                  width={1200}
-                  height={1142}
-                  loading="lazy"
-                  className="aspect-[4/3] w-full border border-border object-cover"
-                />
-                <address className="mt-7 not-italic">
-                  <span className="font-display text-2xl">{SITE.address.street}</span>
-                  <span className="mt-2 block text-sm text-muted-foreground">
-                    {SITE.address.district} — {SITE.address.city}
-                  </span>
-                  <span className="block text-sm text-muted-foreground">
-                    CEP {SITE.address.zip}
-                  </span>
-                </address>
-                <a
-                  href={SITE.mapsUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-full border border-ink px-7 text-xs font-semibold uppercase tracking-[0.16em] transition-transform hover:-translate-y-0.5"
-                >
-                  <MapPin className="size-4" /> Como chegar
-                </a>
-              </Reveal>
-
-              <Reveal delay={0.1}>
-                <div className="border border-border bg-offwhite p-7 sm:p-9">
-                  <h3 className="flex items-center gap-3 font-display text-2xl">
-                    <Clock className="size-5 text-gold" /> Horário de funcionamento
-                  </h3>
-                  <dl className="mt-7 divide-y divide-border">
-                    {HOURS.map((h) => (
-                      <div key={h.day} className="flex items-baseline justify-between gap-4 py-3.5">
-                        <dt className="text-sm text-muted-foreground">{h.day}</dt>
-                        <dd
-                          className={`text-sm font-semibold ${
-                            h.time === "Fechado" ? "text-muted-foreground" : ""
-                          }`}
-                        >
-                          {h.time}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <p className="mt-7 text-xs leading-relaxed text-muted-foreground">
-                    Atendimento com hora marcada. A aplicação de mega hair leva algumas horas, então
-                    combinamos o melhor horário pelo WhatsApp.
-                  </p>
-                  <div className="mt-7">
-                    <Cta label="Agendar meu horário" />
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
+        {/* Mesmo bloco de localização e horários do site principal, com
+            mapa — em vez de uma versão própria só desta página. */}
+        <LocationHours />
 
         <section className="bg-gold py-20 text-ink">
           <Reveal className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-6 md:flex-row md:items-center lg:px-10">
