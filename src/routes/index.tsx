@@ -17,7 +17,7 @@ import { Philosophy } from "@/components/site/Philosophy";
 import { Reviews } from "@/components/site/Reviews";
 import { Services } from "@/components/site/Services";
 import { LocationHours } from "@/components/site/LocationHours";
-import { WHATSAPP } from "@/lib/site-data";
+import { BASE_URL, WHATSAPP } from "@/lib/site-data";
 
 const TITLE = "SÜ Hair Concept | Beauty Experience";
 const DESCRIPTION =
@@ -43,7 +43,11 @@ export const Route = createFileRoute("/")({
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    // Canonical precisa ser absoluto. Com "/" o Lighthouse acusa
+    // canonical inválido, e na troca de domínio o Google não saberia
+    // qual endereço é o oficial — que é justamente o risco de manter
+    // o .netlify.app indexado junto com o domínio próprio.
+    links: [{ rel: "canonical", href: BASE_URL }],
     scripts: [
       {
         // Perguntas frequentes marcadas para o Google — podem aparecer

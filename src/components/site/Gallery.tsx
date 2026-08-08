@@ -118,7 +118,11 @@ export function Gallery() {
                     key={img.alt}
                     onClick={() => setActive(index)}
                     className="group relative block w-full overflow-hidden"
-                    aria-label={`Ampliar imagem: ${img.alt}`}
+                    // O rótulo precisa conter o texto visível do botão
+                    // (img.tag). Sem isso, quem usa comando de voz fala
+                    // o que está na tela e o navegador não encontra o
+                    // botão, porque o nome acessível era outro.
+                    aria-label={`${img.tag}: ampliar imagem — ${img.alt}`}
                   >
                     <img
                       src={img.src}

@@ -128,7 +128,10 @@ const GOOGLE: Depoimento[] = [
 
 function Stars({ nota = 5, className = "" }: { nota?: number; className?: string }) {
   return (
-    <div className={`flex gap-0.5 ${className}`} aria-label={`${nota} de 5 estrelas`}>
+    // role="img" é obrigatório aqui: sem ele o aria-label num <div> é
+    // proibido e o leitor de tela ignora, anunciando as estrelas como
+    // conteúdo vazio em vez de dizer a nota.
+    <div className={`flex gap-0.5 ${className}`} role="img" aria-label={`${nota} de 5 estrelas`}>
       {Array.from({ length: 5 }).map((_, i) => (
         <Star key={i} className={`size-3.5 ${i < nota ? "fill-gold text-gold" : "text-border"}`} />
       ))}
