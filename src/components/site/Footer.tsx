@@ -10,7 +10,9 @@ export function Footer() {
         <div className="grid gap-10 border-b border-white/10 pb-12 md:grid-cols-3">
           <div>
             <p className="font-display text-2xl tracking-[0.2em] text-white">SÜ Hair Concept</p>
-            <p className="mt-2 text-[11px] uppercase tracking-[0.3em] text-gold">Beauty Experience</p>
+            <p className="mt-2 text-[11px] uppercase tracking-[0.3em] text-gold">
+              Beauty Experience
+            </p>
           </div>
 
           <address className="not-italic">
@@ -59,7 +61,8 @@ export function Footer() {
         {/* /60 e não /40: a 40% o contraste era 3,8:1, abaixo do mínimo
             de 4,5:1 que a WCAG pede para texto pequeno. */}
         <p className="pt-6 text-center text-[11px] tracking-wide text-white/60">
-          © {new Date().getFullYear()} SÜ Hair Concept · Beauty Experience — Todos os direitos reservados.
+          © {new Date().getFullYear()} SÜ Hair Concept · Beauty Experience — Todos os direitos
+          reservados.
         </p>
       </div>
     </footer>

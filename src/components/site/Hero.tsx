@@ -1,7 +1,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { MapPin, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
 
-import heroPoster from "@/assets/hero-video-poster.jpg";
+// WebP: 84 KB contra 147 KB do JPG, mesma imagem. Como ela é o elemento
+// que o Google mede como LCP, cada KB aqui conta.
+import heroPoster from "@/assets/hero-video-poster.webp";
 import { SITE, WHATSAPP } from "@/lib/site-data";
 
 export function Hero() {
@@ -9,27 +12,62 @@ export function Hero() {
   const y = useTransform(scrollY, [0, 800], [0, 160]);
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
+  // Começa em false também no servidor: assim o HTML entregue nunca traz
+  // o vídeo, e o navegador não tem como começar a baixá-lo antes de a
+  // foto aparecer.
+  const [mostrarVideo, setMostrarVideo] = useState(false);
+
+  useEffect(() => {
+    const conexao = (navigator as { connection?: { saveData?: boolean } }).connection;
+    if (conexao?.saveData) return;
+    if (!window.matchMedia("(min-width: 1024px)").matches) return;
+    // Espera a página terminar de carregar para não disputar banda com
+    // a foto, que é o que a visitante vê primeiro.
+    if (document.readyState === "complete") {
+      setMostrarVideo(true);
+      return;
+    }
+    const aoCarregar = () => setMostrarVideo(true);
+    window.addEventListener("load", aoCarregar);
+    return () => window.removeEventListener("load", aoCarregar);
+  }, []);
+
   return (
     <section
       id="inicio"
       className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-black"
     >
-      {/* Vídeo da fachada em loop, mudo e sem controles — é cenário, não
-          conteúdo. O poster cobre o intervalo até o vídeo carregar e serve
-          de fallback onde o autoplay é bloqueado (iOS em economia de
-          bateria, por exemplo). */}
-      <motion.video
-        style={{ y }}
-        src="/videos/fachada.mp4"
-        poster={heroPoster}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
+      {/* A foto da fachada é sempre o primeiro pixel: ela é o elemento
+          que o Google mede como LCP, então precisa aparecer sem esperar
+          nada. fetchPriority alta a coloca na frente da fila. */}
+      <img
+        src={heroPoster}
+        alt=""
         aria-hidden="true"
+        fetchPriority="high"
         className="absolute inset-0 size-full scale-110 object-cover"
       />
+
+      {/* O vídeo entra por cima, e só onde faz sentido.
+          São 4,1 MB: no celular ele sozinho levava o LCP a 5,4s, num
+          aparelho que muitas vezes está em rede móvel. Ali a foto já
+          conta a mesma história. No computador, onde a conexão costuma
+          ser melhor, o vídeo entra depois da foto já pintada.
+          saveData respeita quem ligou economia de dados no aparelho. */}
+      {mostrarVideo && (
+        <motion.video
+          style={{ y }}
+          src="/videos/fachada.mp4"
+          poster={heroPoster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          className="absolute inset-0 size-full scale-110 object-cover"
+        />
+      )}
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/45 to-black/85" />
 
       <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center px-6 text-center">
