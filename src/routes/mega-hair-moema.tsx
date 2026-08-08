@@ -29,13 +29,17 @@ import { Reviews, type Depoimento } from "@/components/site/Reviews";
 import { SalonStructure } from "@/components/site/SalonStructure";
 import { BASE_URL, MEGA_HAIR_SERVICOS, SITE, WHATSAPP } from "@/lib/site-data";
 
-const TITLE = "Mega Hair Premium em São Paulo | SÜ Hair Concept";
+// "Moema" e não "São Paulo": mantém coerência com a URL
+// /mega-hair-moema e com o H1, que é o que o Google cruza.
+const TITLE = "Mega Hair em Moema | SÜ Hair Concept";
 const DESCRIPTION =
   "Mega Hair premium com fios 100% humanos, aplicação segura e resultado natural no SÜ Hair Concept, em Moema.";
 
 const benefits = [
   "Fios 100% humanos e selecionados",
-  "Aplicação segura e sem dor",
+  // Sem "segura" e "sem dor": promessa de resultado que o salão não
+  // controla em toda cliente.
+  "Aplicação confortável e tecnicamente cuidadosa",
   "Resultado natural e duradouro",
   "Mais de 10 anos de experiência",
   "Diagnóstico gratuito e personalizado",
@@ -269,9 +273,15 @@ function MegaHairLanding() {
               <p className="mb-5 flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-gold">
                 <Sparkles className="size-4" /> Especialistas em Mega Hair
               </p>
+              {/* O H1 diz o serviço e o bairro, que é o que o Google
+                  cruza com a URL e o título. A frase comercial continua
+                  em destaque logo abaixo, como subtítulo. */}
               <h1 className="text-balance-pretty font-display text-5xl font-light leading-[1.04] sm:text-7xl">
-                O cabelo que você sonha, com a naturalidade que você merece.
+                Mega Hair em <span className="italic text-gold">Moema</span>
               </h1>
+              <p className="mt-5 text-balance-pretty font-display text-2xl font-light leading-snug text-background/90 sm:text-3xl">
+                O cabelo que você sonha, com a naturalidade que você merece.
+              </p>
               <p className="mt-6 max-w-xl text-sm leading-7 text-background/75 sm:text-base">
                 Técnicas exclusivas, fios 100% humanos e um atendimento individual para transformar
                 comprimento, volume e confiança.

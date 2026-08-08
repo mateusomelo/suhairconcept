@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, HeartHandshake, Layers, ShieldCheck, Sparkles, Stethoscope } from "lucide-react";
+import {
+  ArrowUpRight,
+  HeartHandshake,
+  Layers,
+  ShieldCheck,
+  Sparkles,
+  Stethoscope,
+} from "lucide-react";
 
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
 import { MEGA_HAIR_SERVICOS, SITE, WHATSAPP } from "@/lib/site-data";
@@ -12,10 +19,26 @@ import { MEGA_HAIR_SERVICOS, SITE, WHATSAPP } from "@/lib/site-data";
 const assinatura = (nome: string) => MEGA_HAIR_SERVICOS.find((s) => s.nome === nome)?.su ?? "";
 
 const TECHNIQUES = [
-  { n: "01", title: "Mega Hair Fita Adesiva", text: "Aplicação rápida, plana e confortável — ideal para volume imediato." },
-  { n: "02", title: "Mega Hair Ponto Americano", text: "Costura discreta e resistente, com ótima durabilidade e movimento." },
-  { n: "03", title: "Mega Hair Invisível", text: "Acabamento imperceptível, perfeito para cabelos finos." },
-  { n: "04", title: "Mega Hair Queratina", text: "Fio a fio com queratina, naturalidade máxima e caimento leve." },
+  {
+    n: "01",
+    title: "Mega Hair Fita Adesiva",
+    text: "Aplicação rápida, plana e confortável — ideal para volume imediato.",
+  },
+  {
+    n: "02",
+    title: "Mega Hair Ponto Americano",
+    text: "Costura discreta e resistente, com ótima durabilidade e movimento.",
+  },
+  {
+    n: "03",
+    title: "Mega Hair Invisível",
+    text: "Acabamento imperceptível, perfeito para cabelos finos.",
+  },
+  {
+    n: "04",
+    title: "Mega Hair Queratina",
+    text: "Fio a fio com queratina, naturalidade máxima e caimento leve.",
+  },
 ].map((t) => ({ ...t, su: assinatura(t.title) }));
 
 const REASONS = [
@@ -26,8 +49,10 @@ const REASONS = [
   },
   {
     icon: ShieldCheck,
-    title: "Aplicação segura e sem dor",
-    text: "Técnica moderna, sem tração e sem agredir os fios — alongue sem comprometer a saúde do cabelo.",
+    // Sem "segura", "sem dor" e "sem agredir os fios": são promessas de
+    // resultado e de saúde que o salão não controla em toda cliente.
+    title: "Aplicação confortável e tecnicamente cuidadosa",
+    text: "Técnicas selecionadas de acordo com as características e necessidades do cabelo natural.",
   },
   {
     icon: Layers,
@@ -53,12 +78,13 @@ export function MegaHair() {
         <Reveal className="max-w-3xl">
           <SectionLabel>Mega Hair Premium</SectionLabel>
           <h2 className="mt-6 font-display text-3xl font-light leading-tight sm:text-5xl">
-            O luxo que transforma o seu cabelo e a sua <span className="italic text-gold">confiança.</span>
+            O luxo que transforma o seu cabelo e a sua{" "}
+            <span className="italic text-gold">confiança.</span>
           </h2>
           <p className="mt-6 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Referência em Mega Hair Premium, com técnicas exclusivas, fios 100% naturais e resultados que
-            surpreendem antes mesmo de você se olhar no espelho. Vagas limitadas por semana — cada atendimento é
-            individual e feito por especialistas certificados.
+            Referência em Mega Hair Premium, com técnicas exclusivas, fios 100% naturais e
+            resultados que surpreendem antes mesmo de você se olhar no espelho. Vagas limitadas por
+            semana — cada atendimento é individual e feito por especialistas certificados.
           </p>
         </Reveal>
 

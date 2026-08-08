@@ -309,8 +309,10 @@ function NailsLanding() {
                 Mais que beleza: segurança e cuidado em cada detalhe.
               </h2>
               <p className="mt-6 max-w-xl text-sm leading-7 text-background/75">
-                Um alongamento bem executado corrige o formato, protege as unhas e mantém suas mãos
-                prontas para qualquer ocasião.
+                {/* Sem "protege as unhas": soa como promessa de benefício
+                    à saúde. O texto agora descreve o que a técnica faz. */}
+                Um alongamento bem executado permite personalizar formato, comprimento e acabamento,
+                respeitando a estrutura da unha natural.
               </p>
               <div className="mt-8">
                 <NailCta inverse />

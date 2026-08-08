@@ -77,7 +77,10 @@ export const MEGA_HAIR_SERVICOS = [
 
 /** Serviços de unhas, mesma lógica de nomes e CTA por serviço. */
 export const UNHAS_SERVICOS = [
-  { nome: "Alongamento de Unha de Acrílico", su: "SÜ Signature Acrylix" },
+  // "Acrylic", não "Acrylix": a planilha original trazia Acrylix, mas
+  // ficava incoerente com "SÜ Signature Acrylic Renewal" da manutenção.
+  // Correção pedida pela consultoria e confirmada pelo salão.
+  { nome: "Alongamento de Unha de Acrílico", su: "SÜ Signature Acrylic" },
   { nome: "Alongamento de Unha de Fibra de Vidro", su: "SÜ Signature Fiber" },
   { nome: "Alongamento de Unha de Gel", su: "SÜ Signature Gel" },
   { nome: "Manutenção de Unha de Acrílico", su: "SÜ Signature Acrylic Renewal" },

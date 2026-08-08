@@ -18,7 +18,9 @@ export const FAQ_GRUPOS = [
     perguntas: [
       {
         q: "O mega hair danifica o meu cabelo?",
-        a: "Não. Nossa técnica é aplicada sem tração e sem agredir os fios, garantindo uma experiência confortável e a saúde do seu cabelo natural.",
+        // Sem "garantir a saúde do cabelo": é promessa de resultado de
+        // saúde, que o salão não tem como assegurar em toda cliente.
+        a: "A técnica é escolhida conforme as características do seu cabelo, com aplicação confortável e acompanhamento durante todo o processo. Na avaliação, explicamos o que esperar no seu caso.",
       },
       {
         q: "Os fios são naturais?",
