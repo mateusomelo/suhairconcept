@@ -37,7 +37,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="mb-6 inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.45em] text-gold sm:text-xs"
+          className="sombra-texto mb-6 inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.45em] text-gold sm:text-xs"
         >
           <span className="h-px w-10 bg-gold" />
           Beauty Experience
@@ -48,7 +48,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-4xl font-light leading-[1.1] text-white sm:text-6xl lg:text-7xl"
+          className="sombra-texto font-display text-4xl font-light leading-[1.1] text-white sm:text-6xl lg:text-7xl"
         >
           Salão de Beleza Premium
           <br className="hidden sm:block" /> em <span className="italic text-gold">Moema.</span>
@@ -61,7 +61,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.45 }}
-          className="mt-5 font-display text-lg font-light italic text-gold sm:text-xl"
+          className="sombra-texto mt-5 font-display text-lg font-light italic text-gold sm:text-xl"
         >
           Elevando o padrão da beleza com intenção.
         </motion.p>
@@ -70,7 +70,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.55 }}
-          className="mt-7 max-w-2xl text-sm font-light leading-relaxed text-white/75 sm:text-base"
+          className="sombra-texto mt-7 max-w-2xl text-sm font-light leading-relaxed text-white/90 sm:text-base"
         >
           Cabelos, Mega Hair, unhas e experiências personalizadas em um ambiente sofisticado e
           acolhedor.

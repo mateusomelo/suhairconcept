@@ -204,6 +204,23 @@
   text-wrap: balance;
 }
 
+/*
+ * Sombra atrás das letras, para texto claro sobre foto ou vídeo.
+ *
+ * Escurecer a imagem inteira resolveria a leitura, mas apaga a foto da
+ * fachada. A sombra fica presa às letras: o fundo continua visível e o
+ * texto ganha contraste só onde precisa.
+ *
+ * São duas camadas de propósito. A fechada (2px de desfoque) cria a
+ * borda que separa a letra do fundo; a aberta (16px) apoia essa borda
+ * num halo suave, sem virar mancha.
+ */
+@utility sombra-texto {
+  text-shadow:
+    0 1px 2px rgb(0 0 0 / 0.35),
+    0 2px 16px rgb(0 0 0 / 0.35);
+}
+
 /* Texto das matérias do blog, gerado pelo react-markdown */
 .post-conteudo {
   font-size: 1rem;
