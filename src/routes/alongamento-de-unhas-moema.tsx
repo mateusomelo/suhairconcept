@@ -466,7 +466,10 @@ function NailsLanding() {
         </div>
       </footer>
 
-      <FloatingWhatsApp href={WHATSAPP.unhas} />
+      {/* À esquerda como no site principal: além de não cobrir o botão
+          de voltar ao topo, o atalho fica no mesmo lugar em todas as
+          páginas. */}
+      <FloatingWhatsApp href={WHATSAPP.unhas} lado="esquerda" />
     </div>
   );
 }

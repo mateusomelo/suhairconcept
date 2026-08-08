@@ -4,12 +4,14 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { GTM_ID, GTM_SNIPPET, avisarNavegacao } from "../lib/gtm";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -150,9 +152,23 @@ function RootShell({ children }: { children: ReactNode }) {
     // "removeChild: node is not a child of this node" e derruba a tela.
     <html lang="pt-BR" translate="no">
       <head>
+        {/* O GTM pede para ficar o mais alto possível no <head>, antes de
+            qualquer outra coisa — por isso vem acima do HeadContent. */}
+        <script dangerouslySetInnerHTML={{ __html: GTM_SNIPPET }} />
         <HeadContent />
       </head>
       <body>
+        {/* Alternativa para quem navega com JavaScript desligado. Hoje é
+            quase ninguém, mas é o padrão do GTM e não custa nada. */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
         {children}
         <Scripts />
       </body>
@@ -162,6 +178,33 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  // location.href já é o caminho com a query em texto. Somar pathname
+  // com location.search não funciona: search é um objeto de parâmetros,
+  // e a concatenação derruba a renderização no servidor.
+  const caminho = useRouterState({ select: (s) => s.location.href });
+  const primeiraTela = useRef(true);
+
+  // Cada troca de página vira um evento no GTM. Numa aplicação de página
+  // única a navegação não recarrega nada, então sem isto o contêiner
+  // registraria só a primeira tela de cada visita.
+  //
+  // Observar a localização em vez de router.subscribe("onResolved"):
+  // aquele retorno de chamada não dispara nesta versão do roteador, e o
+  // evento nunca chegava ao dataLayer.
+  useEffect(() => {
+    // A primeira tela já é contada pelo próprio carregamento do GTM.
+    // Disparar aqui também faria a visita ser contada em dobro.
+    if (primeiraTela.current) {
+      primeiraTela.current = false;
+      return;
+    }
+    // A troca do <title> acontece depois deste efeito. Com espera zero o
+    // evento saía com o título da página anterior — medido no navegador.
+    // 300ms é o suficiente para o título novo já estar aplicado, e curto
+    // o bastante para não perder quem sai da página logo em seguida.
+    const t = setTimeout(() => avisarNavegacao(caminho), 300);
+    return () => clearTimeout(t);
+  }, [caminho]);
 
   return (
     <QueryClientProvider client={queryClient}>
