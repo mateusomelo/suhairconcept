@@ -84,10 +84,13 @@ export const Route = createFileRoute("/")({
             ratingValue: "4.9",
             reviewCount: "742",
           },
+          // Segunda e domingo ficam de fora da lista: no schema.org, dia
+          // não declarado significa fechado. Deixar segunda aqui faria o
+          // Google anunciar o salão aberto num dia que ele não abre.
           openingHoursSpecification: [
             {
               "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Monday", "Tuesday", "Wednesday"],
+              dayOfWeek: ["Tuesday", "Wednesday"],
               opens: "09:00",
               closes: "20:00",
             },

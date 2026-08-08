@@ -123,7 +123,7 @@ export const SERVICOS_AVALIACAO = [
 ];
 
 export const HOURS = [
-  { day: "Segunda-feira", time: "09h — 20h" },
+  { day: "Segunda-feira", time: "Fechado" },
   { day: "Terça-feira", time: "09h — 20h" },
   { day: "Quarta-feira", time: "09h — 20h" },
   { day: "Quinta-feira", time: "09h — 21h" },

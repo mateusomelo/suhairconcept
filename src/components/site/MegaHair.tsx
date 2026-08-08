@@ -2,14 +2,21 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, HeartHandshake, Layers, ShieldCheck, Sparkles, Stethoscope } from "lucide-react";
 
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
-import { SITE, WHATSAPP } from "@/lib/site-data";
+import { MEGA_HAIR_SERVICOS, SITE, WHATSAPP } from "@/lib/site-data";
+
+/**
+ * A assinatura SÜ vem de MEGA_HAIR_SERVICOS, a mesma fonte da landing
+ * page — recopiar o texto aqui faria a home mostrar um nome e a landing
+ * outro no dia em que a planilha mudasse.
+ */
+const assinatura = (nome: string) => MEGA_HAIR_SERVICOS.find((s) => s.nome === nome)?.su ?? "";
 
 const TECHNIQUES = [
   { n: "01", title: "Mega Hair Fita Adesiva", text: "Aplicação rápida, plana e confortável — ideal para volume imediato." },
   { n: "02", title: "Mega Hair Ponto Americano", text: "Costura discreta e resistente, com ótima durabilidade e movimento." },
   { n: "03", title: "Mega Hair Invisível", text: "Acabamento imperceptível, perfeito para cabelos finos." },
   { n: "04", title: "Mega Hair Queratina", text: "Fio a fio com queratina, naturalidade máxima e caimento leve." },
-];
+].map((t) => ({ ...t, su: assinatura(t.title) }));
 
 const REASONS = [
   {
@@ -64,7 +71,15 @@ export function MegaHair() {
                 className="flex h-full flex-col bg-background p-8"
               >
                 <span className="font-display text-3xl text-gold/60">{t.n}</span>
+                {/* Nome de busca em destaque, assinatura SÜ abaixo — o
+                    mesmo padrão da landing page, para a cliente
+                    reconhecer o serviço nas duas páginas. */}
                 <h3 className="mt-6 font-display text-xl leading-snug">{t.title}</h3>
+                {t.su && (
+                  <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-gold">
+                    {t.su}
+                  </p>
+                )}
                 <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{t.text}</p>
               </motion.article>
             </Reveal>
