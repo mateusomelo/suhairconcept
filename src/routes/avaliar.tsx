@@ -69,11 +69,15 @@ function AvaliarPage() {
       .from("avaliacoes")
       .insert({ ...base, servicos: servicos.length ? servicos : null });
 
-    // 42703 = coluna inexistente. Acontece se o site subir antes de
-    // rodar o 004_avaliacoes_servicos.sql no Supabase. Nesse caso vale
-    // gravar a avaliação sem os serviços: perder o depoimento de uma
-    // cliente por causa da ordem do deploy seria bem pior.
-    if (error?.code === "42703") {
+    // Coluna `servicos` ainda não criada no banco — acontece enquanto o
+    // 004_avaliacoes_servicos.sql não for rodado no Supabase. Nesse caso
+    // grava sem os serviços: perder o depoimento de uma cliente por
+    // causa da ordem do deploy seria bem pior.
+    //
+    // São dois códigos porque vêm de camadas diferentes: PGRST204 é o
+    // PostgREST recusando pelo cache de schema (é o que realmente sai
+    // num insert) e 42703 é o Postgres reclamando de coluna inexistente.
+    if (error?.code === "PGRST204" || error?.code === "42703") {
       ({ error } = await supabase.from("avaliacoes").insert(base));
     }
 
