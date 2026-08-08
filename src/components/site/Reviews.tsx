@@ -245,8 +245,13 @@ export function Reviews({
                   </p>
                 </div>
               </div>
+              {/* Direto ao Google, pelo mesmo motivo do botão do topo:
+                  a avaliação só pode ser publicada pela própria pessoa,
+                  logada na conta dela, na tela do Google. */}
               <a
-                href="/avaliar"
+                href={SITE.googleReview}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-gold px-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-ink transition-transform hover:-translate-y-0.5"
               >
                 <PenLine className="size-4" /> Deixe sua avaliação

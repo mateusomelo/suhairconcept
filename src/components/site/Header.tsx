@@ -69,8 +69,14 @@ export function Header() {
           >
             Blog
           </a>
+          {/* Vai direto ao Google: não existe forma de publicar uma
+              avaliação no Google a partir do site — só a própria pessoa,
+              logada na conta dela, consegue publicar. Um formulário aqui
+              no meio só adicionava um passo antes do inevitável. */}
           <a
-            href="/avaliar"
+            href={SITE.googleReview}
+            target="_blank"
+            rel="noreferrer"
             className="flex min-h-9 items-center rounded-full border border-gold px-3.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-gold lg:hidden"
           >
             Avaliar
