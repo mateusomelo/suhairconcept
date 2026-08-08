@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft, Check, Loader2, MapPin, Star } from "lucide-react";
 
 import logoSu from "@/assets/logo-su-marca.png";
-import { SITE } from "@/lib/site-data";
+import { SERVICOS_AVALIACAO, SITE } from "@/lib/site-data";
 import { supabase } from "@/lib/supabase";
 
 const TITLE = "Como foi sua experiência? | SÜ Hair Concept";
@@ -25,25 +25,57 @@ function AvaliarPage() {
   const [hover, setHover] = useState(0);
   const [comentario, setComentario] = useState("");
   const [nome, setNome] = useState("");
+  const [servicos, setServicos] = useState<string[]>([]);
   const [estado, setEstado] = useState<"form" | "enviando" | "pronto">("form");
   const [erro, setErro] = useState<string | null>(null);
 
+  function alternarServico(nomeServico: string) {
+    setServicos((atuais) =>
+      atuais.includes(nomeServico)
+        ? atuais.filter((s) => s !== nomeServico)
+        : [...atuais, nomeServico],
+    );
+  }
+
   async function enviar(e: React.FormEvent) {
     e.preventDefault();
+
+    // Obrigatórios: estrelas, nome e comentário. O serviço é opcional —
+    // exigir mais de quem está saindo do salão derruba a resposta.
     if (nota === 0) {
       setErro("Escolha de 1 a 5 estrelas para continuar.");
+      return;
+    }
+    if (!nome.trim()) {
+      setErro("Escreva seu nome para continuar.");
+      return;
+    }
+    if (!comentario.trim()) {
+      setErro("Escreva um comentário para continuar.");
       return;
     }
 
     setEstado("enviando");
     setErro(null);
 
-    const { error } = await supabase.from("avaliacoes").insert({
+    const base = {
       nota,
-      comentario: comentario.trim() || null,
-      nome: nome.trim() || null,
+      comentario: comentario.trim(),
+      nome: nome.trim(),
       aprovado: false,
-    });
+    };
+
+    let { error } = await supabase
+      .from("avaliacoes")
+      .insert({ ...base, servicos: servicos.length ? servicos : null });
+
+    // 42703 = coluna inexistente. Acontece se o site subir antes de
+    // rodar o 004_avaliacoes_servicos.sql no Supabase. Nesse caso vale
+    // gravar a avaliação sem os serviços: perder o depoimento de uma
+    // cliente por causa da ordem do deploy seria bem pior.
+    if (error?.code === "42703") {
+      ({ error } = await supabase.from("avaliacoes").insert(base));
+    }
 
     if (error) {
       setErro("Não conseguimos enviar sua avaliação. Tente novamente em instantes.");
@@ -111,13 +143,14 @@ function AvaliarPage() {
 
               <label className="mt-8 block">
                 <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                  Quer contar mais? (opcional)
+                  Seu comentário
                 </span>
                 <textarea
                   value={comentario}
                   onChange={(e) => setComentario(e.target.value)}
                   maxLength={600}
                   rows={4}
+                  required
                   placeholder="O que mais te marcou no atendimento?"
                   className="mt-3 w-full resize-none rounded-lg border border-border bg-offwhite p-4 text-sm outline-none focus:border-gold"
                 />
@@ -125,16 +158,46 @@ function AvaliarPage() {
 
               <label className="mt-5 block">
                 <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                  Seu nome (opcional)
+                  Seu nome
                 </span>
                 <input
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
                   maxLength={80}
+                  required
                   placeholder="Como podemos te chamar?"
                   className="mt-3 w-full rounded-lg border border-border bg-offwhite p-4 text-sm outline-none focus:border-gold"
                 />
               </label>
+
+              {/* Opcional de propósito: serve para o salão saber qual
+                  serviço gerou a nota, mas exigir isso de quem está
+                  saindo com pressa custaria respostas. */}
+              <fieldset className="mt-8">
+                <legend className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                  Quais serviços você recebeu? (opcional)
+                </legend>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {SERVICOS_AVALIACAO.map((servico) => {
+                    const marcado = servicos.includes(servico);
+                    return (
+                      <button
+                        key={servico}
+                        type="button"
+                        onClick={() => alternarServico(servico)}
+                        aria-pressed={marcado}
+                        className={`min-h-9 rounded-full border px-4 text-xs transition-colors ${
+                          marcado
+                            ? "border-gold bg-gold font-semibold text-ink"
+                            : "border-border bg-offwhite text-muted-foreground hover:border-gold"
+                        }`}
+                      >
+                        {servico}
+                      </button>
+                    );
+                  })}
+                </div>
+              </fieldset>
 
               {erro && <p className="mt-5 text-sm text-red-600">{erro}</p>}
 

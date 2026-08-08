@@ -102,6 +102,26 @@ export const NAV_LINKS = [
 ];
 
 /** Editável: horários de funcionamento */
+/**
+ * Serviços oferecidos na pesquisa de satisfação, como no formulário do
+ * Google. Serve para o salão saber qual serviço gerou cada nota — uma
+ * média geral não diz se o problema está na unha ou na coloração.
+ */
+export const SERVICOS_AVALIACAO = [
+  "Corte",
+  "Coloração",
+  "Mechas e luzes",
+  "Mega Hair",
+  "Escova",
+  "Tratamento capilar",
+  "Alongamento de unhas",
+  "Manicure e pedicure",
+  "Sobrancelhas",
+  "Cílios",
+  "Maquiagem",
+  "Depilação",
+];
+
 export const HOURS = [
   { day: "Segunda-feira", time: "09h — 20h" },
   { day: "Terça-feira", time: "09h — 20h" },
